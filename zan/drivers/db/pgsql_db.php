@@ -185,7 +185,7 @@ class ZP_PgSQL_Db extends ZP_Load {
 	public function rows() {
 		return (!$this->query) ? FALSE : (int) pg_num_rows($this->query);	
 	}
-
+	
 	/**
      * Get the last inserted ID
      *
