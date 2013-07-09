@@ -717,10 +717,16 @@ class ZP_Db extends ZP_Load {
      * @return boolean value / void
      */
 	public function free() {
+		return FALSE;
+		
 		if($this->PDO) {
 	 		return ($this->Rs) ? $this->Rs->closeCursor() : FALSE;
 	 	} 
 
+		if($this->db["dbDriver"] === "pgsql") {
+			return FALSE;
+		}
+		
 	 	return ($this->Rs) ? $this->Rs->free() : FALSE;
 	}
 	
