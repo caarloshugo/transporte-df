@@ -16,7 +16,7 @@ class Api_Controller extends ZP_Controller {
 	}
 	
 	public function index() {
-		$vars["agencies"] = $this->Default_Model->getAgencies();
+		$vars["agencies"] = $this->Api_Model->getAgencies();
 		
 		echo json_encode($vars);
 	}
