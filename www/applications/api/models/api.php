@@ -16,7 +16,11 @@ class Api_Model extends ZP_Model {
 	
 	public function getAgencies() {
 		$query = "select * from agency";
+		$data  = $this->Db->query($query);
 		
-		return $this->Db->query($query);
+		foreach($data as $key=> $value) {
+			die(var_dump($value));
+			$data[$key]["name"] = utf8_decode($value["name"]);
+		}
 	}
 }
