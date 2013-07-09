@@ -15,10 +15,10 @@ $routes = array(
 		"params"	  => array()
 	),
 	1 => array(
-		"pattern"	  => "/^estado/",
-		"application" => "default",
-		"controller"  => "default",
-		"method"	  => "estado",
-		"params"	  => array()
+		"pattern"	  => "/^routes/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "routes",
+		"params"	  => array(segment(1))
 	)
 );
