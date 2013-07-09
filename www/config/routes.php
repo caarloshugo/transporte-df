@@ -8,11 +8,11 @@ if(!defined("_access")) {
 
 $routes = array(
 	0 => array(
-		"pattern"	  => "/^get/",
-		"application" => "default",
-		"controller"  => "default",
-		"method"	  => "get",
-		"params"	  => array(segment(1))
+		"pattern"	  => "/^agencies/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "agencies",
+		"params"	  => array()
 	),
 	1 => array(
 		"pattern"	  => "/^estado/",

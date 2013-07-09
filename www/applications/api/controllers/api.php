@@ -15,7 +15,7 @@ class Api_Controller extends ZP_Controller {
 		$this->Templates->theme();
 	}
 	
-	public function index() {
+	public function agencies() {
 		$vars["agencies"] = $this->Api_Model->getAgencies();
 		
 		echo json_encode($vars);
