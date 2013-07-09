@@ -16,9 +16,7 @@ class Api_Model extends ZP_Model {
 	
 	public function getAgencies() {
 		$query = "select * from agency";
-		$data  = $this->Db->query($query);
 		
-		die(var_dump($data));
-		return $data;
+		return $this->Db->query($query);
 	}
 }
