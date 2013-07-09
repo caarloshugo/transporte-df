@@ -51,9 +51,9 @@ class ZP_PgSQL_Db extends ZP_Load {
      *
      * @return object value
      */
-	public function connect() {
+	public function connect($db) {
 		if(self::$connection === NULL) {
-			$dsn = "host=". _dbHost ." port=". _dbPort ." dbname=". _dbName ." user=". _dbUser ." password=". _dbPwd ."";
+			$dsn = "host=". $db["dbHost"] ." port=". $db["dbPort"] ." dbname=". $db["dbName"] ." user=". $db["dbUser"] ." password=". $db["dbPwd"] ."";
 			
 			self::$connection = pg_connect($dsn);
 		}
