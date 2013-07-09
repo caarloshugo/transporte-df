@@ -19,7 +19,7 @@ class Api_Model extends ZP_Model {
 		$data  = $this->Db->query($query);
 		
 		foreach($data as $key=> $value) {
-			$data[$key]["agency_name"] = utf8_encode($value["agency_name"]);
+			$data[$key]["agency_name"] = utf8_decode($value["agency_name"]);
 		}
 		
 		return $data;
