@@ -30,7 +30,7 @@ if(!defined("_access")) {
  * @author		MilkZoft Developer Team
  * @link		http://www.zanphp.com/documentation/en/classes/mysqli_db_class
  */
-class ZP_PgSQL extends ZP_Load {
+class ZP_PgSQL_Db extends ZP_Load {
 
 	/**
 	 * Contains the connection of the database
