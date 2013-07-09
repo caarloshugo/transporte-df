@@ -1,0 +1,75 @@
+circle {
+  pointer-events: all;
+}
+
+circle.parent {
+  stroke: steelblue;
+}
+
+.c109 { fill: #4042e3 !important; }
+.c87 { fill: #01a8dc !important; }
+.c65 { fill: #e5a649 !important; }
+.c43 { fill: #e48148 !important; }
+.c21 { fill: #e36914 !important; }
+.c0 { fill: #ed1f1f !important; }
+
+#chart  circle { fill: #10b9da; }
+#chart  circle.parent { fill: #9bcee1; }
+#chart text.parent { fill: #1f77b4; color:#fff !important;}
+#chart text.parent { fill: #fff; }
+
+#chart2 circle { fill: #429cce; }
+#chart2 circle.parent { fill: #6fbdee; color:#fff !important; }
+#chart2 text.parent { fill: #fff; }
+circle.parent:hover {
+  stroke: #ff7f0e;
+  stroke-width: .5px;
+}
+
+circle.child {
+  pointer-events: none;
+}
+
+#info-base { float:left; width:320px; margin:47px 0 0 -90px; }
+#value-name { float:left; width:320px; height:auto; margin:10px 0 0 0; font-size:20px; color:#000; }
+#value-base { float:left; width:122px; height:122px; color:#e4e6e5; font-size:65px; }
+#value-base  span { float:left; margin:23px 0 0 16px; }
+
+#value-namen { float:left; width:320px; height:auto; margin:10px 0 0 0; font-size:20px; color:#000; }
+#value-basen { float:left; width:122px; height:122px; color:#e4e6e5; font-size:65px; }
+#value-basen  span { float:left; margin:23px 0 0 16px; }
+
+#info-pro { float:left; width:320px; margin:47px 0 0 -90px; }
+#value-namep { float:left; width:320px; height:auto; margin:10px 0 0 0; font-size:20px; color:#000; }
+#value-pro { float:left; width:122px; height:122px; color:#e4e6e5; font-size:65px; }
+#value-pro  span { float:left; margin:23px 0 0 16px; }
+
+#value-namepn { float:left; width:320px; height:auto; margin:10px 0 0 0; font-size:20px; color:#000; }
+#value-pron { float:left; width:122px; height:122px; color:#e4e6e5; font-size:65px; }
+#value-pron  span { float:left; margin:23px 0 0 16px; }
+
+#buttons-more { float:right; margin:-130px 50px 0 0; width:299px; }
+#metodologia-box { float:left; text-decoration:none; width:299px; height:57px; color:#4c4c4c; background-color:#cecfcf; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; font-size:19px; }
+#metodologia-box:hover { background-color:#a4a5a4; color:#696a69; }
+.metodologia-img { text-indent:-999px; margin:10px 0 0 10px; float:left; background:url(images/metodologia.png); width:35px; height:38px; overflow:hidden; }
+.metodologia-desc { margin:10px 0 0 10px; float:left; }
+
+#guia-inter-box { margin-top:18px; float:left; text-decoration:none; width:299px; height:57px; color:#4c4c4c; background-color:#cecfcf; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; font-size:19px; }
+#guia-inter-box:hover { background-color:#a4a5a4; color:#696a69; }
+.guia-inter-img { text-indent:-999px; margin:10px 0 0 10px; float:left; background:url(images/guia.png); width:35px; height:34px; overflow:hidden; }
+.guia-inter-desc { margin:10px 0 0 10px; float:left; }
+
+#chart { float:left; margin:0 0 0 0; width:700px; height:580px; }
+#chart2 { float:left; margin:0 0 0 0; width:700px; height:580px; }
+
+#nchart circle { fill: #429cce; }
+#nchart circle.parent { fill: #9bcee1; color:#fff !important; }
+#nchart text.parent { fill: #fff; }
+#nchart { float:left; margin:0 0 0 0; width:700px; height:580px;  }
+
+#nchart2 circle { fill: #429cce; }
+#nchart2 circle.parent { fill: #6fbdee; color:#fff !important; }
+#nchart2 text.parent { fill: #fff; }
+#nchart2 { float:left; margin:0 0 0 0; width:700px; height:580px;  }
+
+.description { color:#8c8c8c; font-size:18px; }
