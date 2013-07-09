@@ -9,8 +9,8 @@ class Api_Controller extends ZP_Controller {
 	public function __construct() {
 		$this->app("api");
 		
-		$this->Templates     = $this->core("Templates");
-		$this->Default_Model = $this->model("Default_Model");
+		$this->Templates = $this->core("Templates");
+		$this->Api_Model = $this->model("Api_Model");
 		
 		$this->Templates->theme();
 	}
