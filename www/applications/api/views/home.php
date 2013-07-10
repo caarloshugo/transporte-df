@@ -6,7 +6,7 @@ body { margin:0; padding:0; }
 <div id='map'></div>
 
 <script type='text/javascript'>
-var map = L.mapbox.map('map', 'caarloshugo.map-1l67y9mj', { minZoom: 2, maxZoom:7, }).setView([15.029296875, 16.46769474828896], 2);
+var map = L.mapbox.map('map', 'caarloshugo.map-1l67y9mj', { minZoom: 10, maxZoom:19, }).setView([19.404,-99], 11);
 
 map.dragging.disable();
 map.touchZoom.disable();
