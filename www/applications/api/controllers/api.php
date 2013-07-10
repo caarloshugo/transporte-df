@@ -18,8 +18,7 @@ class Api_Controller extends ZP_Controller {
 	public function index() {
 		$vars["view"]   = $this->view("home", TRUE);
 		$vars["routes"] = $this->Api_Model->getStopsByAgency("MB");
-		
-		die(var_dump($vars["routes"]));
+
 		$this->render("content", $vars);
 	}
 	
