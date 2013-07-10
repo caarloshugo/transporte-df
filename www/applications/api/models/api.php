@@ -26,7 +26,14 @@ class Api_Model extends ZP_Model {
 	}
 	
 	public function getAgency($idAgency) {
+		$query = "select * from agency where agency_id='" . $idAgency . "'";
+		$data  = $this->Db->query($query);
 		
+		foreach($data as $key=> $value) {
+			$data[$key]["agency_name"] = utf8_decode($value["agency_name"]);
+		}
+		
+		return $data;
 	}
 	
 	public function getRoutes($idAgency) {
