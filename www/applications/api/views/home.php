@@ -17,6 +17,9 @@ map.scrollWheelZoom.disable();
 */
 
 
+<?php
+	die(var_dump($stops));
+?>
 /*Egipt*/
 L.marker([26.5064453125, 29.126506435131713], {
     icon: L.icon({
