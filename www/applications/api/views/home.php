@@ -1,6 +1,7 @@
 <style>
 body { margin:0; padding:0; }
 #map { position:absolute; top:0; bottom:0; width:100%; }
+.leaflet-container img { background-position: 50% -4px; }
 </style>
 
 <div id='map'></div>
@@ -18,8 +19,8 @@ map.doubleClickZoom.disable();
 	<?php foreach($route["stops"] as $stop) { ?>
 		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
 			icon: L.icon({
-				iconUrl: 'https://tiles.mapbox.com/v3/marker/pin-l-rail+<?php echo $route["route_color"];?>.png',
-				iconSize:     [24, 24],
+				iconUrl: 'https://tiles.mapbox.com/v3/marker/pin-m-rail+<?php echo $route["route_color"];?>.png',
+				iconSize:     [30, 70],
 				iconAnchor:   [0, 0],
 				popupAnchor:  [0, 0]
 			})
