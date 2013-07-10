@@ -19,7 +19,7 @@ map.doubleClickZoom.disable();
 		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
 			icon: L.icon({
 				iconUrl: 'https://tiles.mapbox.com/v3/marker/pin-l-rail+<?php echo $route["route_color"];?>.png',
-				iconSize:     [35, 45],
+				iconSize:     [24, 24],
 				iconAnchor:   [0, 0],
 				popupAnchor:  [0, 0]
 			})
