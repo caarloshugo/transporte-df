@@ -16,8 +16,10 @@ class Api_Controller extends ZP_Controller {
 	}
 	
 	public function index() {
-		$vars["view"]  = $this->view("home", TRUE);
-		$vars["stops"] = $this->Api_Model->getStops("ROUTE_14244");
+		$vars["view"]   = $this->view("home", TRUE);
+		$vars["stops"]  = $this->Api_Model->getStops("ROUTE_14244");
+		$vars["stops2"] = $this->Api_Model->getStops("ROUTE_14243");
+		
 		$this->render("content", $vars);
 	}
 	
