@@ -15,7 +15,7 @@ class Api_Model extends ZP_Model {
 	}
 	
 	public function index() {
-		echo "Api v1.0"
+		echo "Api v1.0";
 	}
 	
 	public function getAgencies() {
