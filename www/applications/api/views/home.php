@@ -17,58 +17,15 @@ map.scrollWheelZoom.disable();
 */
 
 
-<?php
-	die(var_dump($stops));
-?>
-/*Egipt*/
-L.marker([26.5064453125, 29.126506435131713], {
-    icon: L.icon({
-        iconUrl: '30.png',
-        iconSize:     [30, 30],
-        iconAnchor:   [15, 15],
-        popupAnchor:  [0, 0]
-    })
-}).addTo(map).bindPopup('<p><strong>Egipt</strong></p><p>OBI 2012 Score: 3</p><p><a href="http://makebudgetspublic.org/francais/?page_id=187" target="_blank">lire la suite</a></p>');
-
-/*Vietnam*/
-L.marker([12.523104144490723, 108.33984374999994], {
-    icon: L.icon({
-        iconUrl: '30.png',
-        iconSize:     [30, 30],
-        iconAnchor:   [15, 15],
-        popupAnchor:  [0, 0]
-    })
-}).addTo(map).bindPopup('<p><strong>Vietnam</strong></p><p>OBI 2012 Score: 6</p><p><a href="http://makebudgetspublic.org/francais/?page_id=191" target="_blank">lire la suite</a></p>');
-
-/*Fiji*/
-L.marker([-17.758453653762345, 177.9931640625], {
-    icon: L.icon({
-        iconUrl: '30.png',
-        iconSize:     [30, 30],
-        iconAnchor:   [15, 15],
-        popupAnchor:  [0, 0]
-    })
-}).addTo(map).bindPopup('<p><strong>Fiji</strong></p><p>OBI 2012 Score: 6</p><p><a href="http://makebudgetspublic.org/francais/?page_id=185" target="_blank">lire la suite</a></p>');
-
-/*Senegal*/
-L.marker([14.701215324750864, -13.96412], {
-    icon: L.icon({
-        iconUrl: '30.png',
-        iconSize:     [30, 30],
-        iconAnchor:   [15, 15],
-        popupAnchor:  [0, 0]
-    })
-}).addTo(map).bindPopup('<p><strong>Senegal</strong></p><p>OBI 2012 Score: 10</p><p><a href="http://makebudgetspublic.org/francais/?page_id=182" target="_blank">lire la suite</a></p>');
-
-/*Kyrgyzstan*/
-L.marker([41.33634355096041, 73.96412], {
-    icon: L.icon({
-        iconUrl: '30.png',
-        iconSize:     [30, 30],
-        iconAnchor:   [15, 15],
-        popupAnchor:  [0, 0]
-    })
-}).addTo(map).bindPopup('<p><strong>Kyrgyzstan</strong></p><p>OBI 2012 Score: 20</p><p><a href="http://makebudgetspublic.org/francais/?page_id=189" target="_blank">lire la suite</a></p>');
-
+<?php foreach($stops as $stop) { ?>
+	L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+		icon: L.icon({
+			iconUrl: '<?php print $this->themePath; ?>/css/renders/rail-18.png',
+			iconSize:     [18, 18],
+			iconAnchor:   [18, 18],
+			popupAnchor:  [0, 0]
+		})
+	}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+<?php } ?>
 
 </script>
