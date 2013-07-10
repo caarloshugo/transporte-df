@@ -27,6 +27,7 @@ class Api_Controller extends ZP_Controller {
 	
 	public function routes($idAgency) {
 		$vars["routes"] = $this->Api_Model->getRoutes($idAgency);
+		$vars["agency"] = $this->Api_Model->getAgency($idAgency);
 		
 		echo json_encode($vars);
 	}
