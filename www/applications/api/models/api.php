@@ -123,7 +123,7 @@ class Api_Model extends ZP_Model {
 				$stops[$key2]["stop_desc"] = utf8_decode($value["stop_desc"]);
 			}
 		
-			$data[$key]["stops"] = $stops[0];
+			$data[$key]["stops"] = $stops;
 		}
 		
 		return $data;
