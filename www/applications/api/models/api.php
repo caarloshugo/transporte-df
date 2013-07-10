@@ -14,10 +14,6 @@ class Api_Model extends ZP_Model {
 		$this->helpers();
 	}
 	
-	public function index() {
-		echo "Api v1.0";
-	}
-	
 	public function getAgencies() {
 		$query = "select * from agency";
 		$data  = $this->Db->query($query);
