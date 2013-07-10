@@ -16,7 +16,9 @@ class Api_Controller extends ZP_Controller {
 	}
 	
 	public function index() {
-		echo "Api v1.0";
+		$vars["view"] = $this->view("home", TRUE);
+			
+		$this->render("content", $vars);
 	}
 	
 	/*Agencies*/
