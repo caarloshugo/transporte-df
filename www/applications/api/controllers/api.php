@@ -39,7 +39,10 @@ class Api_Controller extends ZP_Controller {
 	}
 	
 	public function route($idRoute) {
+		$vars["route"]  = $this->Api_Model->getRoute($idAgency);
+		$vars["agency"] = $this->Api_Model->getAgency($idAgency);
 		
+		echo json_encode($vars);
 	}
 	
 	public function stops($idRoute) {
