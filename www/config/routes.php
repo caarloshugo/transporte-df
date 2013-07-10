@@ -22,7 +22,7 @@ $routes = array(
 		"params"	  => array(segment(1))
 	),
 	2 => array(
-		"pattern"	  => "/^routes/",
+		"pattern"	  => "/^stops/",
 		"application" => "api",
 		"controller"  => "api",
 		"method"	  => "stops",
