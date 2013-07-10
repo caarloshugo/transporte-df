@@ -14,6 +14,8 @@ class Api_Model extends ZP_Model {
 		$this->helpers();
 	}
 	
+	
+	/*Agencies*/
 	public function getAgencies() {
 		$query = "select * from agency";
 		$data  = $this->Db->query($query);
@@ -39,7 +41,10 @@ class Api_Model extends ZP_Model {
 		
 		return $data;
 	}
+		
 	
+	
+	/*Routes*/
 	public function getRoutes($idAgency) {
 		$query = "select * from routes where agency_id='" . $idAgency . "'";
 		$data  = $this->Db->query($query);
@@ -70,8 +75,25 @@ class Api_Model extends ZP_Model {
 		return $data;
 	}
 	
+	
+	
+	/*Stops*/
 	public function getStops($idRoute) {
 		$query = "select * from stops where route_id='" . $idRoute . "'";
+		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		foreach($data as $key=> $value) {
+			$data[$key]["stop_name"] = utf8_decode($value["stop_name"]);
+			$data[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
+		}
+		
+		return $data;
+	}
+	
+	public function getStop($idStop) {
+		$query = "select * from stops where stop_id='" . $idStop . "'";
 		$data  = $this->Db->query($query);
 		
 		if(!$data) return false;
