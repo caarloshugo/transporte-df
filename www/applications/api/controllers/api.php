@@ -26,4 +26,10 @@ class Api_Controller extends ZP_Controller {
 		
 		echo json_encode($vars);
 	}
+	
+	public function stops($idRoute) {
+		$vars["stops"] = $this->Api_Model->getStops($idRoute);
+		
+		echo json_encode($vars);
+	}
 }
