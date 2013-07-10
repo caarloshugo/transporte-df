@@ -109,20 +109,22 @@ class Api_Model extends ZP_Model {
 	}
 	
 	public function getStopsByAgency($idAgency) {
-		$query   = "select route_id from routes where agency_id='" . $idAgency . "'";
-		$results = $this->Db->query($query);
+		$query = "select * from routes where agency_id='" . $idAgency . "'";
+		$data  = $this->Db->query($query);
 		
-		if(!$results) return false;
+		if(!$data) return false;
 		
-		foreach($results as $result) {
+		foreach($data as $key => $result) {
 			$query = "select stops.*,to_stop_id from stops left join transfers on stop_id=from_stop_id where route_id='" . $result["route_id"] . "'";
-			$data[$result["route_id"]] = $this->Db->query($query);
+			$data[$key]["stops"][] = $this->Db->query($query);
 			
-			foreach($data[$result["route_id"]] as $key=> $value) {
-				$data[$result["route_id"]][$key]["stop_name"] = utf8_decode($value["stop_name"]);
-				$data[$result["route_id"]][$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
+			foreach($data[$key]["stops"] as $key2 => $value) {
+				$data[$key]["stops"][$key2]["stop_name"] = utf8_decode($value["stop_name"]);
+				$data[$key]["stops"][$key2]["stop_desc"] = utf8_decode($value["stop_desc"]);
 			}
 		}
+		
+		die(var_dump($data));
 		
 		return $data;
 	}
