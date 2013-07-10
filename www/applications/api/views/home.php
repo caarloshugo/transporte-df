@@ -1,7 +1,7 @@
 <style>
 body { margin:0; padding:0; }
 #map { position:absolute; top:0; bottom:0; width:100%; }
-.leaflet-container img { background-position: 50% 2px; }
+.leaflet-container img { background-position: 50% 2 px; }
 </style>
 
 <div id='map'></div>
@@ -19,8 +19,8 @@ map.doubleClickZoom.disable();
 	<?php foreach($route["stops"] as $stop) { ?>
 		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
 			icon: L.icon({
-				iconUrl: 'https://tiles.mapbox.com/v3/marker/pin-s-rail+<?php echo $route["route_color"];?>.png',
-				iconSize:     [20, 50],
+				iconUrl: '<?php print $this->themePath; ?>/css/renders/rail-18-<?php echo $route["route_color"];?>.png',
+				iconSize:     [18, 18],
 				iconAnchor:   [0, 0],
 				popupAnchor:  [0, 0]
 			})
