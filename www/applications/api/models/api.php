@@ -124,8 +124,6 @@ class Api_Model extends ZP_Model {
 			}
 		}
 		
-		die(var_dump($data));
-		
 		return $data;
 	}
 }

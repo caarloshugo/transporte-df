@@ -15,10 +15,10 @@ map.doubleClickZoom.disable();
 
 
 <?php foreach($routes as $route) { ?>
-	<?php foreach($route as $stop) { ?>
+	<?php foreach($route["stops"] as $stop) { ?>
 		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
 			icon: L.icon({
-				iconUrl: '<?php print $this->themePath; ?>/css/renders/rail-18.png',
+				iconUrl: 'https://tiles.mapbox.com/v3/marker/pin-l-rail+<?php echo $route["route_color"];?>.png',
 				iconSize:     [18, 18],
 				iconAnchor:   [1, 1],
 				popupAnchor:  [0, 0]
