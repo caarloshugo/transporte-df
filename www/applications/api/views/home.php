@@ -14,26 +14,17 @@ map.doubleClickZoom.disable();
 // map.scrollWheelZoom.disable();
 
 
-<?php foreach($stops as $stop) { ?>
-	L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
-		icon: L.icon({
-			iconUrl: '<?php print $this->themePath; ?>/css/renders/rail-18.png',
-			iconSize:     [18, 18],
-			iconAnchor:   [1, 1],
-			popupAnchor:  [0, 0]
-		})
-	}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
-<?php } ?>
-
-<?php foreach($stops2 as $stop) { ?>
-	L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
-		icon: L.icon({
-			iconUrl: '<?php print $this->themePath; ?>/css/renders/rail-18.png',
-			iconSize:     [18, 18],
-			iconAnchor:   [1, 1],
-			popupAnchor:  [0, 0]
-		})
-	}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+<?php foreach($routes as $route) { ?>
+	<?php foreach($route as $stop) { ?>
+		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+			icon: L.icon({
+				iconUrl: '<?php print $this->themePath; ?>/css/renders/rail-18.png',
+				iconSize:     [18, 18],
+				iconAnchor:   [1, 1],
+				popupAnchor:  [0, 0]
+			})
+		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+	<?php } ?>
 <?php } ?>
 
 </script>
