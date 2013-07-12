@@ -48,7 +48,11 @@
 	border-color: #3887BE;
 	color: #FFF;
 }
-    
+
+.leaflet-container {
+    overflow: auto !important;
+}
+
 </style>
 
 	
@@ -115,7 +119,6 @@ $(document).ready( function () {
 	});
 	
 	$(".MB").hide();
-	$("footer").hide();
 });
  
 </script>
