@@ -4,6 +4,13 @@ body { margin:0; padding:0; }
 .leaflet-container img { background-position: 50% 2 px; }
 </style>
 
+	
+<div style="position:relative; height:500px; width:100%;" class="clear">
+	<div id="crime" class="layers">
+			<a id="control" data-control="layer" href="#control">control</a>
+	</div>
+</div>
+
 <div id='map'></div>
 
 <script type='text/javascript'>
