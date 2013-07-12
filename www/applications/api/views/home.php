@@ -68,35 +68,6 @@ map.touchZoom.disable();
 map.doubleClickZoom.disable();
 // map.scrollWheelZoom.disable();
 
-
-<?php foreach($metro as $route) { ?>
-	<?php foreach($route["stops"] as $stop) { ?>
-		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
-			icon: L.icon({
-				iconUrl     : '<?php print $this->themePath; ?>/css/renders/rail-18-<?php echo $route["route_color"];?>.png',
-				iconSize    :     [18, 18],
-				iconAnchor  :   [0, 0],
-				popupAnchor :  [0, 0],
-				className   : '<?php echo $route["agency_id"];?>'
-			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
-	<?php } ?>
-<?php } ?>
-
-<?php foreach($metrobus as $route) { ?>
-	<?php foreach($route["stops"] as $stop) { ?>
-		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
-			icon: L.icon({
-				iconUrl     : '<?php print $this->themePath; ?>/css/renders/rail-18-<?php echo $route["route_color"];?>.png',
-				iconSize    :     [18, 18],
-				iconAnchor  :   [0, 0],
-				popupAnchor :  [0, 0],
-				className   : '<?php echo $route["agency_id"];?>'
-			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
-	<?php } ?>
-<?php } ?>
-
 var metro    = document.getElementById('filter-metro');
 var metrobus = document.getElementById('filter-metrobus');
 
@@ -125,6 +96,34 @@ metrobus.onclick = function() {
 	return false;
 };
     
+<?php foreach($metro as $route) { ?>
+	<?php foreach($route["stops"] as $stop) { ?>
+		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+			icon: L.icon({
+				iconUrl     : '<?php print $this->themePath; ?>/css/renders/rail-18-<?php echo $route["route_color"];?>.png',
+				iconSize    :     [18, 18],
+				iconAnchor  :   [0, 0],
+				popupAnchor :  [0, 0],
+				className   : '<?php echo $route["agency_id"];?>'
+			})
+		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+	<?php } ?>
+<?php } ?>
+
+<?php foreach($metrobus as $route) { ?>
+	<?php foreach($route["stops"] as $stop) { ?>
+		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+			icon: L.icon({
+				iconUrl     : '<?php print $this->themePath; ?>/css/renders/rail-18-<?php echo $route["route_color"];?>.png',
+				iconSize    :     [18, 18],
+				iconAnchor  :   [0, 0],
+				popupAnchor :  [0, 0],
+				className   : '<?php echo $route["agency_id"];?>'
+			})
+		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+	<?php } ?>
+<?php } ?>
+
 </script>
 
 
