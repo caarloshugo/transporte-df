@@ -123,6 +123,10 @@ metrobus.onclick = function() {
 	<?php } ?>
 <?php } ?>
 
+ map.markerLayer.setFilter(function(f) {
+	return true;
+});
+        
 </script>
 
 
