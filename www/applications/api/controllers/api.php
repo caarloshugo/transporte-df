@@ -38,15 +38,15 @@ class Api_Controller extends ZP_Controller {
 	
 	/*Routes*/
 	public function routes($idAgency) {
-		$vars["routes"] = $this->Api_Model->getRoutes($idAgency);
 		$vars["agency"] = $this->Api_Model->getAgency($idAgency);
+		$vars["routes"] = $this->Api_Model->getRoutes($idAgency);
 		
 		echo json_encode($vars);
 	}
 	
 	public function route($idRoute) {
-		$vars["route"]  = $this->Api_Model->getRoute($idRoute);
 		$vars["agency"] = $this->Api_Model->getAgency($vars["route"][0]["agency_id"]);
+		$vars["route"]  = $this->Api_Model->getRoute($idRoute);
 		
 		echo json_encode($vars);
 	}
@@ -55,17 +55,17 @@ class Api_Controller extends ZP_Controller {
 	
 	/*Stops*/
 	public function stops($idRoute) {
-		$vars["stops"]  = $this->Api_Model->getStops($idRoute);
-		$vars["route"]  = $this->Api_Model->getRoute($idRoute);
 		$vars["agency"] = $this->Api_Model->getAgency($vars["route"][0]["agency_id"]);
+		$vars["route"]  = $this->Api_Model->getRoute($idRoute);
+		$vars["stops"]  = $this->Api_Model->getStops($idRoute);
 		
 		echo json_encode($vars);
 	}
 	
 	public function stop($idStop) {
-		$vars["stop"]   = $this->Api_Model->getStop($idStop);
-		$vars["route"]  = $this->Api_Model->getRoute($vars["stop"][0]["route_id"]);
 		$vars["agency"] = $this->Api_Model->getAgency($vars["route"][0]["agency_id"]);
+		$vars["route"]  = $this->Api_Model->getRoute($vars["stop"][0]["route_id"]);
+		$vars["stop"]   = $this->Api_Model->getStop($idStop);
 		
 		echo json_encode($vars);
 	}

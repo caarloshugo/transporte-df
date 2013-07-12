@@ -114,6 +114,12 @@ class Api_Model extends ZP_Model {
 		
 		if(!$data) return false;
 		
+		foreach($data as $key=> $value) {
+			$data[$key]["route_short_name"] = utf8_decode($value["route_short_name"]);
+			$data[$key]["route_long_name"]  = utf8_decode($value["route_long_name"]);
+			$data[$key]["route_desc"] 	    = utf8_decode($value["route_desc"]);
+		}
+		
 		foreach($data as $key => $result) {
 			$query = "select stops.*,to_stop_id from stops left join transfers on stop_id=from_stop_id where route_id='" . $result["route_id"] . "'";
 			$stops = $this->Db->query($query);
