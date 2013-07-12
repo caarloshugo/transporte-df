@@ -83,7 +83,7 @@ map.doubleClickZoom.disable();
 				popupAnchor : [0, 0],
 				className   : '<?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		}).addTo(map).bindPopup("<p><?php echo $stop["stop_name"];?></p>");
 	<?php } ?>
 <?php } ?>
 
@@ -97,7 +97,7 @@ map.doubleClickZoom.disable();
 				popupAnchor : [0, 0],
 				className   : '<?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		}).addTo(map).bindPopup("<p><?php echo $stop["stop_name"];?></p>");
 	<?php } ?>
 <?php } ?>
 
@@ -111,7 +111,7 @@ map.doubleClickZoom.disable();
 				popupAnchor : [0, 0],
 				className   : '<?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		}).addTo(map).bindPopup("<p><?php echo $stop["stop_name"];?></p>");
 	<?php } ?>
 <?php } ?>
 
@@ -125,7 +125,7 @@ map.doubleClickZoom.disable();
 				popupAnchor : [0, 0],
 				className   : '<?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		}).addTo(map).bindPopup("<p><?php echo $stop["stop_name"];?></p>");
 	<?php } ?>
 <?php } ?>
 
@@ -139,7 +139,7 @@ map.doubleClickZoom.disable();
 				popupAnchor : [0, 0],
 				className   : 'agency <?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		}).addTo(map).bindPopup("<p><?php echo $stop["stop_name"];?></p>");
 	<?php } ?>
 <?php } ?>
 		
