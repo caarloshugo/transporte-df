@@ -2,6 +2,13 @@
 body { margin:0; padding:0; }
 #map { position:absolute; top:0; bottom:0; width:100%; }
 .leaflet-container img { background-position: 50% 2 px; }
+#crime {
+	height: 100px;
+    position: relative;
+    top: 0;
+    width: 100px;
+    z-index: 1;
+}
 </style>
 
 	
