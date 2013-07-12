@@ -109,6 +109,7 @@ metro.onclick = function(e) {
 		console.log(f);
 		return f.properties['marker-symbol'] === 'fast-food';
 	});
+	
 	return false;
 };
 
@@ -120,8 +121,9 @@ metrobus.onclick = function() {
 		// Returning true for all markers shows everything.
 		return true;
 	});
+	
 	return false;
-    };
+};
     
 </script>
 
