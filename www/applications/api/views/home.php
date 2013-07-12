@@ -50,7 +50,7 @@
 }
 
 .leaflet-container {
-    overflow: auto !important;
+    overflow: visible !important;
 }
 
 </style>
