@@ -48,5 +48,12 @@ $routes = array(
 		"controller"  => "api",
 		"method"	  => "stop",
 		"params"	  => array(segment(1))
+	),
+	6 => array(
+		"pattern"	  => "/^stopsagency/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "stopsByAgency",
+		"params"	  => array(segment(1))
 	)
 );

@@ -69,4 +69,11 @@ class Api_Controller extends ZP_Controller {
 		
 		echo json_encode($vars);
 	}
+	
+	public function stopsByAgency($idAgency) {
+		$vars["agency"] = $this->Api_Model->getAgency($idAgency);
+		$vars["routes"] = $this->Api_Model->getStopsByAgency("MB");
+		
+		echo json_encode($vars);
+	}
 }
