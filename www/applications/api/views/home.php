@@ -1,4 +1,5 @@
 <style>
+body { margin:0; padding:0; }
 #map { position:absolute; top:0; bottom:0; width:100%; }
 	 
 #map-ui {
@@ -47,10 +48,6 @@
 	background: #3887BE;
 	border-color: #3887BE;
 	color: #FFF;
-}
-
-.leaflet-container {
-    overflow: visible !important;
 }
 
 </style>
