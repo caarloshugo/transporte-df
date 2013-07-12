@@ -1,4 +1,6 @@
 <style>
+#map { position:absolute; top:0; bottom:0; width:100%; }
+	 
 #map-ui {
 	position: absolute;
 	top: 10px;
