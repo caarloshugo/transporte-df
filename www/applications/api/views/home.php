@@ -101,6 +101,20 @@ map.doubleClickZoom.disable();
 	<?php } ?>
 <?php } ?>
 
+<?php foreach($rtp as $route) { ?>
+	<?php foreach($route["stops"] as $stop) { ?>
+		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+			icon: L.icon({
+				iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
+				iconSize    : [18, 18],
+				iconAnchor  : [0, 0],
+				popupAnchor : [0, 0],
+				className   : 'agency <?php echo $route["agency_id"];?>'
+			})
+		}).addTo(map).bindPopup('<p><?php echo addslashes($stop["stop_name"]);?></p>');
+	<?php } ?>
+<?php } ?>
+
 
 <?php foreach($ste as $route) { ?>
 	<?php foreach($route["stops"] as $stop) { ?>
