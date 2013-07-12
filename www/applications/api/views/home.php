@@ -57,6 +57,9 @@ body { margin:0; padding:0; }
     <ul>
         <li><a href='#' class='filter-e active' id='filter-metro'>Metro</a></li>
         <li><a href='#' class="filter-e" id='filter-metrobus'>Metrobus</a></li>
+        <li><a href='#' class='filter-e' id='filter-rtp'>RTP</a></li>
+        <li><a href='#' class="filter-e" id='filter-ste'>STE</a></li>
+        <li><a href='#' class='filter-e' id='filter-sub'>SUB</a></li>
     </ul>
 </div>
 
@@ -98,12 +101,54 @@ map.doubleClickZoom.disable();
 	<?php } ?>
 <?php } ?>
 
+<?php foreach($rtp as $route) { ?>
+	<?php foreach($route["stops"] as $stop) { ?>
+		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+			icon: L.icon({
+				iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
+				iconSize    : [18, 18],
+				iconAnchor  : [0, 0],
+				popupAnchor : [0, 0],
+				className   : '<?php echo $route["agency_id"];?>'
+			})
+		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+	<?php } ?>
+<?php } ?>
+
+<?php foreach($ste as $route) { ?>
+	<?php foreach($route["stops"] as $stop) { ?>
+		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+			icon: L.icon({
+				iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
+				iconSize    : [18, 18],
+				iconAnchor  : [0, 0],
+				popupAnchor : [0, 0],
+				className   : '<?php echo $route["agency_id"];?>'
+			})
+		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+	<?php } ?>
+<?php } ?>
+
+<?php foreach($sub as $route) { ?>
+	<?php foreach($route["stops"] as $stop) { ?>
+		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+			icon: L.icon({
+				iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
+				iconSize    : [18, 18],
+				iconAnchor  : [0, 0],
+				popupAnchor : [0, 0],
+				className   : 'agency <?php echo $route["agency_id"];?>'
+			})
+		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+	<?php } ?>
+<?php } ?>
+		
 $(document).ready( function () {
 	$("#filter-metro").click( function() {
 		$(".filter-e").removeClass("active");
 		$("#filter-metro").addClass("active");
 		
-		$(".MB").hide();
+		$(".agency").hide();
 		$(".METRO").show();
 	});
 	
@@ -111,11 +156,36 @@ $(document).ready( function () {
 		$(".filter-e").removeClass("active");
 		$("#filter-metrobus").addClass("active");
 		
-		$(".METRO").hide();
+		$(".agency").hide();
 		$(".MB").show();
 	});
 	
-	$(".MB").hide();
+	("#filter-rtp").click( function() {
+		$(".filter-e").removeClass("active");
+		$("#filter-rtp").addClass("active");
+		
+		$(".agency").hide();
+		$(".RTP").show();
+	});
+	
+	("#filter-ste").click( function() {
+		$(".filter-e").removeClass("active");
+		$("#filter-ste").addClass("active");
+		
+		$(".agency").hide();
+		$(".STE").show();
+	});
+	
+	("#filter-sub").click( function() {
+		$(".filter-e").removeClass("active");
+		$("#filter-sub").addClass("active");
+		
+		$(".agency").hide();
+		$(".SUB").show();
+	});
+	
+	$(".agency").hide();
+	$(".METRO").show();
 });
  
 </script>
