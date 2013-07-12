@@ -47,7 +47,6 @@
 	color: #FFF;
 }
     
-.leaflet-container img { background-position: 50% 2 px; }
 </style>
 
 	
