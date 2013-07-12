@@ -19,7 +19,7 @@ map.doubleClickZoom.disable();
 	<?php foreach($route["stops"] as $stop) { ?>
 		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
 			icon: L.icon({
-				iconUrl: '<?php print $this->themePath; ?>/css/renders/rail-18-<?php echo $route["route_color"];?>.png',
+				iconUrl: '<?php print $this->themePath; ?>/css/renders/marker-rail-24-<?php echo $route["route_color"];?>.png',
 				iconSize:     [18, 18],
 				iconAnchor:   [0, 0],
 				popupAnchor:  [0, 0]
