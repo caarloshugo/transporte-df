@@ -72,6 +72,7 @@ map.doubleClickZoom.disable();
 var metro    = document.getElementById('filter-metro');
 var metrobus = document.getElementById('filter-metrobus');
 
+console.log(metro);
 metro.onclick = function(e) {
 	metrobus.className = '';
 	this.className = 'active';
