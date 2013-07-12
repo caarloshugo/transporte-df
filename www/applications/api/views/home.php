@@ -54,8 +54,8 @@
 	
 <div id='map-ui'>
     <ul>
-        <li><a href='#' id='filter-metro'>Metro</a></li>
-        <li><a href='#' class='active' id='filter-metrobus'>Metrobus</a></li>
+        <li><a href='#' class='filter-e active' id='filter-metro'>Metro</a></li>
+        <li><a href='#' class="filter-e" id='filter-metrobus'>Metrobus</a></li>
     </ul>
 </div>
 
@@ -99,14 +99,22 @@ map.doubleClickZoom.disable();
 
 $(document).ready( function () {
 	$("#filter-metro").click( function() {
+		$(".filter-e").removeClass("active");
+		$("#filter-metro").addClass("active");
+		
 		$(".MB").hide();
 		$(".METRO").show();
 	});
 	
 	$("#filter-metrobus").click( function() {
+		$(".filter-e").removeClass("active");
+		$("#filter-metrobus").addClass("active");
+		
 		$(".METRO").hide();
 		$(".MB").show();
 	});
+	
+	$(".MB").hide();
 });
  
 </script>
