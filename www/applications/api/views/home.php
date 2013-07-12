@@ -147,7 +147,7 @@ $(document).ready( function () {
 		$(".MB").show();
 	});
 	
-	("#filter-rtp").click( function() {
+	$("#filter-rtp").click( function() {
 		$(".filter-e").removeClass("active");
 		$("#filter-rtp").addClass("active");
 		
@@ -155,7 +155,7 @@ $(document).ready( function () {
 		$(".RTP").show();
 	});
 	
-	("#filter-ste").click( function() {
+	$("#filter-ste").click( function() {
 		$(".filter-e").removeClass("active");
 		$("#filter-ste").addClass("active");
 		
@@ -163,7 +163,7 @@ $(document).ready( function () {
 		$(".STE").show();
 	});
 	
-	("#filter-sub").click( function() {
+	$("#filter-sub").click( function() {
 		$(".filter-e").removeClass("active");
 		$("#filter-sub").addClass("active");
 		
