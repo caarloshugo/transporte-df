@@ -115,6 +115,7 @@ $(document).ready( function () {
 	});
 	
 	$(".MB").hide();
+	$("footer").hide();
 });
  
 </script>
