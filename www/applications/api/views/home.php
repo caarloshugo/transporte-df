@@ -68,36 +68,7 @@ var map = L.mapbox.map('map', 'caarloshugo.map-1l67y9mj', { minZoom: 10, maxZoom
 map.touchZoom.disable();
 map.doubleClickZoom.disable();
 // map.scrollWheelZoom.disable();
-
-var metro    = document.getElementById('filter-metro');
-var metrobus = document.getElementById('filter-metrobus');
-
-console.log(metro);
-metro.onclick = function(e) {
-	metrobus.className = '';
-	this.className = 'active';
-	// The setFilter function takes a GeoJSON feature object
-	// and returns true to show it or false to hide it.
-	map.markerLayer.setFilter(function(f) {
-		console.log(f);
-		return f.properties['marker-symbol'] === 'fast-food';
-	});
-	
-	return false;
-};
-
-metrobus.onclick = function() {
-	metro.className = '';
-	this.className = 'active';
-	map.markerLayer.setFilter(function(f) {
-		console.log(f);
-		// Returning true for all markers shows everything.
-		return true;
-	});
-	
-	return false;
-};
-    
+ 
 <?php foreach($metro as $route) { ?>
 	<?php foreach($route["stops"] as $stop) { ?>
 		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
@@ -126,10 +97,18 @@ metrobus.onclick = function() {
 	<?php } ?>
 <?php } ?>
 
- map.markerLayer.setFilter(function(f) {
-	return true;
+$(document).ready( function () {
+	$("#filter-metro").click( function() {
+		$(".MB").hide();
+		$(".METRO").show();
+	});
+	
+	$("#filter-metrobus").click( function() {
+		$(".METRO").hide();
+		$(".MB").show();
+	});
 });
-        
+ 
 </script>
 
 
