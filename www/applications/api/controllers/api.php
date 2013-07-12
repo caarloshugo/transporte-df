@@ -17,8 +17,8 @@ class Api_Controller extends ZP_Controller {
 	
 	public function index() {
 		$vars["view"]     = $this->view("home", TRUE);
-		$vars["metro"] 	  = $this->Api_Model->getStopsByAgency("MB");
-		$vars["metrobus"] = $this->Api_Model->getStopsByAgency("METROBUS");
+		$vars["metrobus"] = $this->Api_Model->getStopsByAgency("MB");
+		$vars["metro"] 	  = $this->Api_Model->getStopsByAgency("METRO");
 
 		$this->render("content", $vars);
 	}
