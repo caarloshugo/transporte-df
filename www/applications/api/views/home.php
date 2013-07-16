@@ -115,15 +115,14 @@ if($.bbq.getState('access_token')) {
 // If there is a token in the state, consume it
 	var token = $.bbq.getState('access_token');
 	$.bbq.pushState({}, 2);
-	getVenues();
 } else if ($.bbq.getState('error')) {
 } else {
 	doAuthRedirect();
 }
   
 
-function getVenues() {
-	$.getJSON(config.apiUrl + 'v2/venues/explore?ll=19.43003057756082,-99.16325211524963' + '&limit=15&radius=300&time=any&day=any&oauth_token=' + window.token + '&v=2013071', {}, function(data) {
+function getVenues(lat, lon) {
+	$.getJSON(config.apiUrl + 'v2/venues/explore?ll=' + lat + ',' + lon + '&limit=15&radius=300&time=any&day=any&oauth_token=' + window.token + '&v=2013071', {}, function(data) {
       
       console.log(data);
       
@@ -143,7 +142,8 @@ function getVenues() {
           shadowUrl: null,
           iconSize: new L.Point(32,32),
           iconAnchor: new L.Point(16, 41),
-          popupAnchor: new L.Point(0, -51)
+          popupAnchor: new L.Point(0, -51),
+          className   : 'foursquare'
         });
 		
         var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: '<?php print $this->themePath; ?>/css/images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
@@ -176,11 +176,11 @@ var marker = "";
 		}).addTo(map);
 		
 		marker.on('click', function(e) {
-			$(".title-marker").text("<?php echo $stop["stop_name"];?>");
+			$(".title-marker").html("<?php echo $stop["stop_name"];?>" + '<a href="" onclick="getVenues(<?php echo $stop["stop_lat"];?>,<?php echo $stop["stop_lon"];?>)">Lugares cercanos</a>');
 		});
 		
 		marker.on('mouseover', function(e) {
-			$(".title-marker").text("<?php echo $stop["stop_name"];?>");
+			$(".title-marker").html("<?php echo $stop["stop_name"];?>");
 		});
 	<?php } ?>
 <?php } ?>
