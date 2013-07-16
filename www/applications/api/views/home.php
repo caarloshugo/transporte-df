@@ -144,7 +144,7 @@ function getVenues(lat, lon) {
       }
     });
     
-    map.setView([19.41,-99.1], 16, {pan: {animate: true}}); 
+    map.setView([lat, lon], 16, {pan: {animate: true}}); 
     
     return false;
 }
