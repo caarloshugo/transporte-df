@@ -79,7 +79,6 @@ body { margin:0; padding:0; }
     <ul>
         <li><a href='#' class='filter-e active' id='filter-metro'>Metro</a></li>
         <li><a href='#' class="filter-e" id='filter-metrobus'>Metrobus</a></li>
-        <li><a href='#' class='filter-e' id='filter-rtp'>RTP</a></li>
         <li><a href='#' class="filter-e" id='filter-ste'>STE</a></li>
         <li><a href='#' class='filter-e' id='filter-sub'>SUB</a></li>
     </ul>
@@ -133,21 +132,6 @@ var marker = "";
 				className   : 'agency <?php echo $route["agency_id"];?>'
 			})
 		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
-	<?php } ?>
-<?php } ?>
-
-
-<?php foreach($rtp as $route) { ?>
-	<?php foreach($route["stops"] as $stop) { ?>
-		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
-			icon: L.icon({
-				iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
-				iconSize    : [18, 18],
-				iconAnchor  : [0, 0],
-				popupAnchor : [0, 0],
-				className   : 'agency <?php echo $route["agency_id"];?>'
-			})
-		}).addTo(map).bindPopup('<p><?php echo addslashes($stop["stop_name"]);?></p>');
 	<?php } ?>
 <?php } ?>
 
