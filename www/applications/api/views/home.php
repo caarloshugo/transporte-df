@@ -144,7 +144,7 @@ function getVenues() {
           popupAnchor: new L.Point(0, -51)
         });
 		
-        var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: 'images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
+        var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: '<?php print $this->themePath; ?>/css/images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
           .bindPopup(venues[i]['venue']['name'], { closeButton: false })
           .on('mouseover', function(e) { this.openPopup(); })
           .on('mouseout', function(e) { this.closePopup(); });
