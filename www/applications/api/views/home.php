@@ -98,7 +98,7 @@ function onclick(name) {
 				popupAnchor : [0, 0],
 				className   : 'agency <?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).on('click', onclic('<?php echo $stop["stop_name"];?>'));
+		}).addTo(map).on('click', onclick('<?php echo $stop["stop_name"];?>'));
 	<?php } ?>
 <?php } ?>
 
