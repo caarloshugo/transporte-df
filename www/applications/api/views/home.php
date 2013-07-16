@@ -52,7 +52,7 @@ body { margin:0; padding:0; }
 
 #info-marker {
 	position: absolute;
-	top: 50px;
+	top: 70px;
 	left: 10px;
 	z-index: 99;
 }
@@ -71,6 +71,10 @@ body { margin:0; padding:0; }
 	text-decoration: none;
 }
 
+#info-marker:hover {
+	background: #ECF5FA;
+}
+
 </style>
 
 	
@@ -85,7 +89,7 @@ body { margin:0; padding:0; }
 </div>
 
 <div id="info-marker">
-	<p class="title-marker">Hello world</p>
+	<p class="title-marker">Mapa del transporte de la ciudad de México</p>
 </div>
 
 <div id='map'></div>
@@ -109,7 +113,7 @@ var marker = "";
 				popupAnchor : [0, 0],
 				className   : 'agency <?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		}).addTo(map);
 		
 		marker.on('click', function(e) {
 			$(".title-marker").text("<?php echo $stop["stop_name"];?>");
