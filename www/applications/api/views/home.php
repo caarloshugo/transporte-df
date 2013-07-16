@@ -57,6 +57,20 @@ body { margin:0; padding:0; }
 	z-index: 99;
 }
 
+#info-marker p {
+	font-size: 13px;
+	background: #FFF;
+	color: #3C4E5A;
+	display: block;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #BBB;
+	border-bottom-width: 0;
+	min-width: 138px;
+	padding: 10px;
+	text-decoration: none;
+}
+
 </style>
 
 	
@@ -71,7 +85,7 @@ body { margin:0; padding:0; }
 </div>
 
 <div id="info-marker">
-	<p>Hello world</p>
+	<p class="title-marker">Hello world</p>
 </div>
 
 <div id='map'></div>
@@ -83,10 +97,6 @@ var map = L.mapbox.map('map', 'caarloshugo.map-1l67y9mj', { minZoom: 10, maxZoom
 map.touchZoom.disable();
 map.doubleClickZoom.disable();
 // map.scrollWheelZoom.disable();
-
-function onclick(name) {
-	console.log(name);
-}
 
 var marker = "";
 <?php foreach($metro as $route) { ?>
@@ -102,7 +112,7 @@ var marker = "";
 		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
 		
 		marker.on('click', function(e) {
-			console.log(e);
+			$(".title-marker").text("<?php echo $stop["stop_name"];?>");
 		});
 	<?php } ?>
 <?php } ?>
