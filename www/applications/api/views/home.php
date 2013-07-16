@@ -91,6 +91,35 @@ body { margin:0; padding:0; }
 <div id='map'></div>
 
 <script type='text/javascript'>
+	
+//Foursquare
+var config = {
+	apiKey: 'J5DRTJ3O5O2Z10SJ4MX4JTMDTGJZWG2LBD0HN44VC23KFKMD',
+	authUrl: 'https://foursquare.com/',
+	apiUrl: 'https://api.foursquare.com/'
+};
+
+/* Attempt to retrieve access token from URL. */
+function doAuthRedirect() {
+	var redirect = window.location.href.replace(window.location.hash, '');
+	var url = config.authUrl + 'oauth2/authenticate?response_type=token&client_id=' + config.apiKey +
+	'&redirect_uri=' + encodeURIComponent(redirect) +
+	'&state=' + encodeURIComponent($.bbq.getState('req') || 'users/self');
+	window.location.href = url;
+};
+
+if($.bbq.getState('access_token')) {	
+// If there is a token in the state, consume it
+	var token = $.bbq.getState('access_token');
+	$.bbq.pushState({}, 2)
+} else if ($.bbq.getState('error')) {
+} else {
+	doAuthRedirect();
+}
+  
+  
+
+//Mapbox	
 var map = L.mapbox.map('map', 'caarloshugo.map-1l67y9mj', { minZoom: 10, maxZoom:19, }).setView([19.41,-99.1], 12);
 
 // map.dragging.disable();
