@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<title><?php print $this->getTitle(); ?></title>
 		
-		<script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" id="jquery"></script>
 		<script src='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.js'></script>
 		<script src="<?php print $this->themePath; ?>/js/apisamples.js"></script>
 		<script src="<?php print $this->themePath; ?>/js/jquery.ba-bbq.js"></script>
