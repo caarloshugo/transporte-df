@@ -83,7 +83,11 @@ var map = L.mapbox.map('map', 'caarloshugo.map-1l67y9mj', { minZoom: 10, maxZoom
 map.touchZoom.disable();
 map.doubleClickZoom.disable();
 // map.scrollWheelZoom.disable();
- 
+
+function onclick(name) {
+	console.log(name);
+}
+
 <?php foreach($metro as $route) { ?>
 	<?php foreach($route["stops"] as $stop) { ?>
 		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
@@ -94,7 +98,7 @@ map.doubleClickZoom.disable();
 				popupAnchor : [0, 0],
 				className   : 'agency <?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>').on('click', console.log("as"));
+		}).addTo(map).on('click', onclic('<?php echo $stop["stop_name"];?>'));
 	<?php } ?>
 <?php } ?>
 
