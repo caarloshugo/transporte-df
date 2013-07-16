@@ -88,9 +88,10 @@ function onclick(name) {
 	console.log(name);
 }
 
+var marker = "";
 <?php foreach($metro as $route) { ?>
 	<?php foreach($route["stops"] as $stop) { ?>
-		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+		marker = L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
 			icon: L.icon({
 				iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
 				iconSize    : [18, 18],
@@ -98,7 +99,11 @@ function onclick(name) {
 				popupAnchor : [0, 0],
 				className   : 'agency <?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).on('click', onclick('<?php echo $stop["stop_name"];?>'));
+		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		
+		marker.on('click', function(e) {
+			alert(e.latlng);
+		});
 	<?php } ?>
 <?php } ?>
 
