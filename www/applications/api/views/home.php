@@ -102,7 +102,7 @@ var marker = "";
 		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
 		
 		marker.on('click', function(e) {
-			alert(e.latlng);
+			console.log(e);
 		});
 	<?php } ?>
 <?php } ?>
