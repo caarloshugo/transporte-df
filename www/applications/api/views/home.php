@@ -129,7 +129,7 @@ function getVenues(lat, lon) {
       venues = data['response']['groups'][0]['items'];
     
       /* Place marker for each venue. */
-      for (var i = 0; i < venues.length; i++) {
+      for(var i = 0; i < venues.length; i++) {
         /* Get marker's location */
         var latLng = new L.LatLng(
           venues[i]['venue']['location']['lat'],
@@ -143,6 +143,8 @@ function getVenues(lat, lon) {
         map.addLayer(marker);
       }
     });
+    
+    map.setView([19.41,-99.1], 16, {pan: {animate: true}}); 
     
     return false;
 }
