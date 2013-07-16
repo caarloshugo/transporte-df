@@ -94,7 +94,7 @@ map.doubleClickZoom.disable();
 				popupAnchor : [0, 0],
 				className   : 'agency <?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>').on('click', alert("as"));
+		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>').on('click', console.log("as"));
 	<?php } ?>
 <?php } ?>
 
