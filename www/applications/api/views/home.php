@@ -69,10 +69,7 @@ body { margin:0; padding:0; }
 	min-width: 138px;
 	padding: 10px;
 	text-decoration: none;
-}
-
-#info-marker:hover {
-	background: #ECF5FA;
+	opacity:0.7;
 }
 
 </style>
@@ -118,6 +115,10 @@ var marker = "";
 		marker.on('click', function(e) {
 			$(".title-marker").text("<?php echo $stop["stop_name"];?>");
 		});
+		
+		marker.on('mouseover', function(e) {
+			$(".title-marker").text("<?php echo $stop["stop_name"];?>");
+		});
 	<?php } ?>
 <?php } ?>
 
@@ -135,6 +136,7 @@ var marker = "";
 	<?php } ?>
 <?php } ?>
 
+
 <?php foreach($rtp as $route) { ?>
 	<?php foreach($route["stops"] as $stop) { ?>
 		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
@@ -148,7 +150,6 @@ var marker = "";
 		}).addTo(map).bindPopup('<p><?php echo addslashes($stop["stop_name"]);?></p>');
 	<?php } ?>
 <?php } ?>
-
 
 <?php foreach($ste as $route) { ?>
 	<?php foreach($route["stops"] as $stop) { ?>
