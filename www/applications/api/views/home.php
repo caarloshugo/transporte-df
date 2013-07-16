@@ -123,6 +123,7 @@ if($.bbq.getState('access_token')) {
 
 function getVenues(lat, lon) {
 	$.getJSON(config.apiUrl + 'v2/venues/explore?ll=' + lat + ',' + lon + '&limit=15&radius=300&time=any&day=any&oauth_token=' + window.token + '&v=2013071', {}, function(data) {
+      
       $(".foursquare-marker").remove();
       
       venues = data['response']['groups'][0]['items'];
@@ -134,18 +135,8 @@ function getVenues(lat, lon) {
           venues[i]['venue']['location']['lat'],
           venues[i]['venue']['location']['lng']
         );
-        
-        /* Build icon for each icon */
-        var leafletIcon = L.Icon.extend({
-          iconUrl: venues[i]['venue']['categories'][0]['icon'],
-          shadowUrl: null,
-          iconSize: new L.Point(32,32),
-          iconAnchor: new L.Point(16, 41),
-          popupAnchor: new L.Point(0, -51),
-          className   : 'foursquare-marker'
-        });
 		
-        var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: '<?php print $this->themePath; ?>/css/images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
+        var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: '<?php print $this->themePath; ?>/css/images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25], className : 'foursquare-marker' })})
           .bindPopup(venues[i]['venue']['name'], { closeButton: false })
           .on('mouseover', function(e) { this.openPopup(); })
           .on('mouseout', function(e) { this.closePopup(); });
