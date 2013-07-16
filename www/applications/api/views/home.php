@@ -123,7 +123,7 @@ if($.bbq.getState('access_token')) {
   
 
 function getVenues() {
-	$.getJSON(config.apiUrl + 'v2/venues/explore?ll=19.43003057756082,-99.16325211524963' + '"&limit=15&radius=300&time=any&day=any&oauth_token=' + window.token + "&v=2013071", {}, function(data) {
+	$.getJSON(config.apiUrl + 'v2/venues/explore?ll=19.43003057756082,-99.16325211524963' + '&limit=15&radius=300&time=any&day=any&oauth_token=' + window.token + '&v=2013071', {}, function(data) {
       
       console.log(data);
       
