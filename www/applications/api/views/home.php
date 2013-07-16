@@ -50,6 +50,13 @@ body { margin:0; padding:0; }
 	color: #FFF;
 }
 
+#info-marker {
+	position: absolute;
+	top: 50px;
+	left: 10px;
+	z-index: 99;
+}
+
 </style>
 
 	
@@ -61,6 +68,10 @@ body { margin:0; padding:0; }
         <li><a href='#' class="filter-e" id='filter-ste'>STE</a></li>
         <li><a href='#' class='filter-e' id='filter-sub'>SUB</a></li>
     </ul>
+</div>
+
+<div id="info-marker">
+	<p>Hello world</p>
 </div>
 
 <div id='map'></div>
@@ -83,7 +94,7 @@ map.doubleClickZoom.disable();
 				popupAnchor : [0, 0],
 				className   : 'agency <?php echo $route["agency_id"];?>'
 			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>').on('click', alter("as"));
 	<?php } ?>
 <?php } ?>
 
