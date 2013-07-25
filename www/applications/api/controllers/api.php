@@ -90,10 +90,13 @@ class Api_Controller extends ZP_Controller {
 				$route  = $this->Api_Model->getRoute($stop["route_id"]);
 				$agency = $this->Api_Model->getAgency($route[0]["agency_id"]);
 				
-				$data[$key]["route"]  = $route[0];
-				$data[$key]["agency"] = $agency[0];
-				$data[$key]["stop"]   = $stop;
+				$data["stops"][$key]["route"]  = $route[0];
+				$data["stops"][$key]["agency"] = $agency[0];
+				$data["stops"][$key]["stop"]   = $stop;
 			}
+			
+			$vars = $data;
+			
 		} else {
 			$vars["stops"] = false;
 		}
