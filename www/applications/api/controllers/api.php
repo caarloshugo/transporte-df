@@ -83,8 +83,8 @@ class Api_Controller extends ZP_Controller {
 	
 	public function search($text = false) {
 		if($text and $text != "") {
-			
-			die(var_dump(urldecode($text)));
+			$text  = urldecode($text);
+			$text  = str_replace(" ", "+", $text);
 			$stops = $this->Api_Model->getStopsBySearch($text);
 			
 			if(!$stops) {
