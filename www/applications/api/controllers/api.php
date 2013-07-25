@@ -85,7 +85,17 @@ class Api_Controller extends ZP_Controller {
 		if($text and $text != "") {
 			$stops = $this->Api_Model->getStopsBySearch($text);
 			
-			die(var_dump($stops));
+			
+			foreach($stops as $key => $stop) {
+				$route  = $this->Api_Model->getRoute($stop["route_id"]);
+				$agency = $this->Api_Model->getAgency($route[0]["agency_id"]);
+				
+				$data[$key]["route"]  = $route[0];
+				$data[$key]["agency"] = $agency[0];
+				$data[$key]["stop"]   = $stop;
+			}
+			
+			die(var_dump($data));
 		}
 		
 		$vars["stops"] = false;
