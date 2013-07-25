@@ -94,11 +94,9 @@ class Api_Controller extends ZP_Controller {
 				$data[$key]["agency"] = $agency[0];
 				$data[$key]["stop"]   = $stop;
 			}
-			
-			die(var_dump($data));
+		} else {
+			$vars["stops"] = false;
 		}
-		
-		$vars["stops"] = false;
 		
 		echo json_encode($vars);
 	}
