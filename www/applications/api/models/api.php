@@ -79,9 +79,7 @@ class Api_Model extends ZP_Model {
 	
 	/*Stops*/
 	public function getStops($idRoute) {
-		$query = "select * from stops where route_id='" . $idRoute . "'";
 		$query = "select stops.*,to_stop_id from stops left join transfers on stop_id=from_stop_id where route_id='" . $idRoute . "'";
-		
 		$data  = $this->Db->query($query);
 		
 		if(!$data) return false;
@@ -130,6 +128,20 @@ class Api_Model extends ZP_Model {
 			}
 		
 			$data[$key]["stops"] = $stops;
+		}
+		
+		return $data;
+	}
+	
+	public function getStopsBySearch($text) {
+		$query = "select stops.*,to_stop_id from stops left join transfers on stop_id=from_stop_id where to_tsquery('" . $text . "') @@ textsearch";
+		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		foreach($data as $key=> $value) {
+			$data[$key]["stop_name"] = utf8_decode($value["stop_name"]);
+			$data[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
 		}
 		
 		return $data;
