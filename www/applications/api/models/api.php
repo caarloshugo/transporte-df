@@ -85,6 +85,7 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key=> $value) {
+			unset($data[$key]["textsearch"]);
 			$data[$key]["stop_name"] = utf8_decode($value["stop_name"]);
 			$data[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
 		}
@@ -123,6 +124,7 @@ class Api_Model extends ZP_Model {
 			$stops = $this->Db->query($query);
 			
 			foreach($stops as $key2 => $value) {
+				unset($stops[$key2]["textsearch"]);
 				$stops[$key2]["stop_name"] = utf8_decode($value["stop_name"]);
 				$stops[$key2]["stop_desc"] = utf8_decode($value["stop_desc"]);
 			}
@@ -140,6 +142,7 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key=> $value) {
+			unset($data[$key]["textsearch"]);
 			$data[$key]["stop_name"] = utf8_decode($value["stop_name"]);
 			$data[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
 		}
