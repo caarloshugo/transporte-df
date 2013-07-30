@@ -28,6 +28,8 @@ class Api_Controller extends ZP_Controller {
 			$vars["rtp"] 	  = $this->Api_Model->getStopsBySearchByAgency("RTP", $text_search);
 			$vars["ste"] 	  = $this->Api_Model->getStopsBySearchByAgency("STE", $text_search);
 			$vars["sub"] 	  = $this->Api_Model->getStopsBySearchByAgency("SUB", $text_search);
+			
+			die(var_dump($vars));
 		} else {
 			$vars["metrobus"] = $this->Api_Model->getStopsByAgency("MB");
 			$vars["metro"] 	  = $this->Api_Model->getStopsByAgency("METRO");
