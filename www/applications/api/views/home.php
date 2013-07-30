@@ -58,7 +58,7 @@ body { margin:0; padding:0; }
 	z-index: 99;
 }
 
-#info-marker p {
+.p-info-marker {
 	font-size: 13px;
 	background: #FFF;
 	color: #3C4E5A;
@@ -80,6 +80,13 @@ body { margin:0; padding:0; }
 	z-index: 99;
 }
 
+#info-marker3 {
+	position: absolute;
+	top: 145px;
+	left: 10px;
+	z-index: 99;
+}
+
 #info-marker2 input {
 	font-size: 13px;
 	background: #FFF;
@@ -95,7 +102,7 @@ body { margin:0; padding:0; }
 	opacity:0.7;
 	float: left;
 }
-
+.color-red { color:#e63e3e !important; }
 .submit { min-width: 43px !important; }
 </style>
 
@@ -121,9 +128,8 @@ body { margin:0; padding:0; }
 </div>
 
 <div id="info-marker">
-	<p class="title-marker">Mapa del transporte de la ciudad de México</p>
+	<p class="title-marker p-info-marker">Mapa del transporte de la ciudad de México</p>
 </div>
-
 
 <div id="info-marker2">
 	<form name="search" action="" method="POST">
@@ -131,6 +137,12 @@ body { margin:0; padding:0; }
 		<input class="submit" type="submit" name="send" value="enviar">
 	</form>
 </div>
+
+<?php if(!is_array($metro) and !is_array($metrobus) and !is_array($ste) and !is_array($sub)) { ?>
+	<div id="info-marker3">
+		<p class="title-marker p-info-marker color-red">No hay resultados con esta busqueda - <a href="<?php echo get("webURL");?>" title="Ver todos">Ver todos</a></p>
+	</div>
+<?php } ?>
 
 <div id='map'></div>
 
