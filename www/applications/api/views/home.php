@@ -15,7 +15,8 @@ body { margin:0; padding:0; }
 	padding: 0;
 }
 
-#map-ui a {
+#map-ui span {
+	cursor:pointer;
 	font-size: 13px;
 	background: #FFF;
 	color: #3C4E5A;
@@ -29,22 +30,22 @@ body { margin:0; padding:0; }
 	text-decoration: none;
 }
 
-#map-ui a:hover {
+#map-ui span:hover {
 	background: #ECF5FA;
 }
 
-#map-ui li:last-child a {
+#map-ui li:last-child span {
 	border-bottom-width: 1px;
 	-webkit-border-radius: 0 0 3px 3px;
 	border-radius: 0 0 3px 3px;
 }
 
-#map-ui li:first-child a {
+#map-ui li:first-child span {
 	-webkit-border-radius: 3px 3px 0 0;
 	border-radius: 3px 3px 0 0;
 }
 
-#map-ui a.active {
+#map-ui span.active {
 	background: #3887BE;
 	border-color: #3887BE;
 	color: #FFF;
@@ -101,10 +102,10 @@ body { margin:0; padding:0; }
 	
 <div id='map-ui'>
     <ul>
-        <li><a href='' class='filter-e active' id='filter-metro'>Metro</a></li>
-        <li><a href='' class="filter-e" id='filter-metrobus'>Metrobus</a></li>
-        <li><a href='' class="filter-e" id='filter-ste'>STE</a></li>
-        <li><a href='' class='filter-e' id='filter-sub'>SUB</a></li>
+        <li><span class='filter-e active' id='filter-metro'>Metro</span></li>
+        <li><span class="filter-e" id='filter-metrobus'>Metrobus</span></li>
+        <li><span class="filter-e" id='filter-ste'>STE</span></li>
+        <li><span class='filter-e' id='filter-sub'>SUB</span></li>
     </ul>
 </div>
 
@@ -204,7 +205,7 @@ var marker = "";
 		}).addTo(map);
 		
 		marker.on('click', function(e) {
-			$(".title-marker").html("<?php echo $stop["stop_name"];?>" + ' - <a href="" onclick="getVenues(<?php echo $stop["stop_lat"];?>,<?php echo $stop["stop_lon"];?>)">Lugares cercanos</a>');
+			$(".title-marker").html("<?php echo $stop["stop_name"];?>" + ' - <span onclick="getVenues(<?php echo $stop["stop_lat"];?>,<?php echo $stop["stop_lon"];?>)">Lugares cercanos</span>');
 		});
 		
 		marker.on('mouseover', function(e) {
