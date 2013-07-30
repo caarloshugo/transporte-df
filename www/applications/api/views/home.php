@@ -128,7 +128,7 @@ body { margin:0; padding:0; }
 </div>
 
 <div id="info-marker">
-	<p class="title-marker p-info-marker">Mapa del transporte de la ciudad de México</p>
+	<p class="title-marker p-info-marker">Mapa de transporte de la ciudad de México</p>
 </div>
 
 <div id="info-marker2">
