@@ -74,7 +74,7 @@ body { margin:0; padding:0; }
 
 #info-marker2 {
 	position: absolute;
-	top: 70px;
+	top: 117px;
 	left: 10px;
 	z-index: 99;
 }
@@ -92,8 +92,10 @@ body { margin:0; padding:0; }
 	padding: 10px;
 	text-decoration: none;
 	opacity:0.7;
+	float: left;
 }
 
+.submit { min-width: 43px !important; }
 </style>
 
 	
@@ -113,7 +115,8 @@ body { margin:0; padding:0; }
 
 <div id="info-marker2">
 	<form action="" method="post">
-		<input type="text" name="search" value="San lazaro"><input type="submit" name="send" value="enviar">
+		<input class="text" type="text" name="search" value="San lazaro">
+		<input class="submit" type="submit" name="send" value="enviar">
 	</form>
 </div>
 
