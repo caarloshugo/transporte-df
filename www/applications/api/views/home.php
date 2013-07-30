@@ -82,7 +82,7 @@ body { margin:0; padding:0; }
 
 #info-marker3 {
 	position: absolute;
-	top: 145px;
+	top: 165px;
 	left: 10px;
 	z-index: 99;
 }
