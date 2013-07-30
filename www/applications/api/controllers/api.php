@@ -19,7 +19,11 @@ class Api_Controller extends ZP_Controller {
 		$vars["view"] = $this->view("home", TRUE);
 		
 		if(isset($_POST["text_search"]) and $_POST["text_search"] != "") {
-			$text_search 	  = $_POST["text_search"];
+			$text  = strtolower($_POST["text_search"]);
+			$text  = str_replace(" ", "+", $text);
+			$text  = removeAcute($text);
+			
+			die(var_dump($text_search));
 			$vars["metrobus"] = $this->Api_Model->getStopsBySearchByAgency("MB", $text_search);
 			$vars["metro"] 	  = $this->Api_Model->getStopsBySearchByAgency("METRO", $text_search);
 			$vars["rtp"] 	  = $this->Api_Model->getStopsBySearchByAgency("RTP", $text_search);
