@@ -9,6 +9,7 @@
 		<script src="<?php print $this->themePath; ?>/js/apisamples.js"></script>
 		<script src="<?php print $this->themePath; ?>/js/jquery.ba-bbq.js"></script>
 	    <link href='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.css' rel='stylesheet' />
+	    <link href='<?php print $this->themePath; ?>/css/style.css' rel='stylesheet' />
 	    <!--[if lte IE 8]>
 			<link href='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.ie.css' rel='stylesheet' >
 		<![endif]-->
