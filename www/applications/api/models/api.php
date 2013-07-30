@@ -119,18 +119,26 @@ class Api_Model extends ZP_Model {
 			$data[$key]["route_desc"] 	    = utf8_decode($value["route_desc"]);
 		}
 		
+		$stopsb = true;
+		
 		foreach($data as $key => $result) {
-			$query = "select stops.*,to_stop_id from stops left join transfers on stop_id=from_stop_id where to_tsquery('" . $text . "') @@ textsearch";
+			$query = "select stops.*,to_stop_id from stops left join transfers on stop_id=from_stop_id where route_id='" . $result["route_id"] . "' and to_tsquery('" . $text . "') @@ textsearch";
 			$stops = $this->Db->query($query);
 			
-			foreach($stops as $key2 => $value) {
-				unset($stops[$key2]["textsearch"]);
-				$stops[$key2]["stop_name"] = utf8_decode($value["stop_name"]);
-				$stops[$key2]["stop_desc"] = utf8_decode($value["stop_desc"]);
-			}
-		
-			$data[$key]["stops"] = $stops;
+			if(is_array($stops)) {
+				$stopsb = false;
+				
+				foreach($stops as $key2 => $value) {
+					unset($stops[$key2]["textsearch"]);
+					$stops[$key2]["stop_name"] = utf8_decode($value["stop_name"]);
+					$stops[$key2]["stop_desc"] = utf8_decode($value["stop_desc"]);
+				}
+			
+				$data[$key]["stops"] = $stops;
+			} 
 		}
+		
+		if($stopsb) return false;
 		
 		return $data;
 	}
