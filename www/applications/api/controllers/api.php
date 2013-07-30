@@ -17,11 +17,11 @@ class Api_Controller extends ZP_Controller {
 	
 	public function index() {
 		$vars["view"] = $this->view("home", TRUE);
-		die(var_dump($_POST));
+		
 		if(isset($_POST["text_search"]) and $_POST["text_search"] != "") {
-			$text  = strtolower($_POST["text_search"]);
-			$text  = str_replace(" ", "+", $text);
-			$text  = removeAcute($text);
+			$text_search  = strtolower($_POST["text_search"]);
+			$text_search  = str_replace(" ", "+", $text_search);
+			$text_search  = removeAcute($text_search);
 			
 			die(var_dump($text_search));
 			$vars["metrobus"] = $this->Api_Model->getStopsBySearchByAgency("MB", $text_search);
