@@ -127,7 +127,7 @@ body { margin:0; padding:0; }
 
 <div id="info-marker2">
 	<form name="search" action="" method="POST">
-		<input class="text" type="text" name="text_search" value="San lázaro">
+		<input class="text" type="text" name="text_search" value="<?php echo (isset($_POST["text_search"])) ? $_POST["text_search"] : "";?>">
 		<input class="submit" type="submit" name="send" value="enviar">
 	</form>
 </div>
@@ -203,6 +203,7 @@ map.doubleClickZoom.disable();
 // map.scrollWheelZoom.disable();
 
 var marker = "";
+
 <?php if(is_array($metro)) { ?>
 	<?php foreach($metro as $route) { ?>
 		<?php foreach($route["stops"] as $stop) { ?>
