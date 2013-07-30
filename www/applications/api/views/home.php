@@ -42,7 +42,6 @@
 var map = L.mapbox.map('map', 'caarloshugo.map-1l67y9mj', { minZoom: 10, maxZoom:19, }).setView([19.41,-99.1], 12);
 
 
-
 //Foursquare
 var config = {
 	apiKey: 'J5DRTJ3O5O2Z10SJ4MX4JTMDTGJZWG2LBD0HN44VC23KFKMD',
@@ -59,17 +58,16 @@ function doAuthRedirect() {
 	window.location.href = url;
 };
 
-if($.bbq.getState('access_token')) {	
-// If there is a token in the state, consume it
-	var token = $.bbq.getState('access_token');
-	$.bbq.pushState({}, 2);
-} else if ($.bbq.getState('error')) {
-} else {
-	//doAuthRedirect();
-}
-  
-
 function getVenues(lat, lon) {
+	if($.bbq.getState('access_token')) {	
+		//If there is a token in the state, consume it
+		var token = $.bbq.getState('access_token');
+		$.bbq.pushState({}, 2);
+	} else if ($.bbq.getState('error')) {
+	} else {
+		doAuthRedirect();
+	}
+  
 	$.getJSON(config.apiUrl + 'v2/venues/explore?ll=' + lat + ',' + lon + '&limit=15&radius=300&time=any&day=any&oauth_token=' + window.token + '&v=2013071', {}, function(data) {
       
       $(".foursquare-marker").remove();
@@ -92,7 +90,7 @@ function getVenues(lat, lon) {
       }
     });
     
-    map.setView([lat, lon], 16, {pan: {animate: true}}); 
+    map.setView([lat, lon], 16, {pan: {animate: true}});
     
     return false;
 }
@@ -109,6 +107,9 @@ var marker = "";
 
 <?php if(is_array($metro)) { ?>
 	<?php foreach($metro as $route) { ?>
+		
+		map.setView([<?php echo $route["stops"][0]["stop_lat"];?>, <?php echo $route["stops"][0]["stop_lon"];?>], 16, {pan: {animate: true}});
+		
 		<?php foreach($route["stops"] as $stop) { ?>
 			marker = L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
 				icon: L.icon({
@@ -121,7 +122,7 @@ var marker = "";
 			}).addTo(map);
 			
 			marker.on('click', function(e) {
-				$(".title-marker").html("<?php echo $stop["stop_name"];?>" + ' - <span onclick="getVenues(<?php echo $stop["stop_lat"];?>,<?php echo $stop["stop_lon"];?>)">Lugares cercanos</span>');
+				$(".title-marker").html("<?php echo $stop["stop_name"];?>" + ' - <span class="foursquare-buttton" onclick="getVenues(<?php echo $stop["stop_lat"];?>,<?php echo $stop["stop_lon"];?>)">Lugares cercanos</span>');
 			});
 			
 			marker.on('mouseover', function(e) {
