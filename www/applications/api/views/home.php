@@ -127,6 +127,7 @@ body { margin:0; padding:0; }
 var map = L.mapbox.map('map', 'caarloshugo.map-1l67y9mj', { minZoom: 10, maxZoom:19, }).setView([19.41,-99.1], 12);
 
 
+
 //Foursquare
 var config = {
 	apiKey: 'J5DRTJ3O5O2Z10SJ4MX4JTMDTGJZWG2LBD0HN44VC23KFKMD',
@@ -149,7 +150,7 @@ if($.bbq.getState('access_token')) {
 	$.bbq.pushState({}, 2);
 } else if ($.bbq.getState('error')) {
 } else {
-	doAuthRedirect();
+	//doAuthRedirect();
 }
   
 
@@ -181,8 +182,9 @@ function getVenues(lat, lon) {
     return false;
 }
 
-//Mapbox
 
+
+//Mapbox
 // map.dragging.disable();
 map.touchZoom.disable();
 map.doubleClickZoom.disable();
