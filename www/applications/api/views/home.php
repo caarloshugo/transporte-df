@@ -35,12 +35,15 @@
 	</div>
 <?php } ?>
 
+<div id="connect">
+	<img id="connect-button" src="<?php print $this->themePath; ?>/css/images/connect-black.png" alt="Foursquare" />
+</div>
+
 <div id='map'></div>
 
 <script type='text/javascript'>
 //Mapbox	
 var map = L.mapbox.map('map', 'caarloshugo.map-1l67y9mj', { minZoom: 10, maxZoom:19, }).setView([19.41,-99.1], 12);
-
 
 //Foursquare
 var config = {
@@ -49,6 +52,17 @@ var config = {
 	apiUrl: 'https://api.foursquare.com/'
 };
 
+function foursquare_connect() {
+	if($.bbq.getState('access_token')) {	
+		//If there is a token in the state, consume it
+		var token = $.bbq.getState('access_token');
+		$.bbq.pushState({}, 2);
+	} else if ($.bbq.getState('error')) {
+	} else {
+		doAuthRedirect();
+	}
+}
+	
 /* Attempt to retrieve access token from URL. */
 function doAuthRedirect() {
 	var redirect = window.location.href.replace(window.location.hash, '');
@@ -59,15 +73,6 @@ function doAuthRedirect() {
 };
 
 function getVenues(lat, lon) {
-	if($.bbq.getState('access_token')) {	
-		//If there is a token in the state, consume it
-		var token = $.bbq.getState('access_token');
-		$.bbq.pushState({}, 2);
-	} else if ($.bbq.getState('error')) {
-	} else {
-		doAuthRedirect();
-	}
-  
 	$.getJSON(config.apiUrl + 'v2/venues/explore?ll=' + lat + ',' + lon + '&limit=15&radius=300&time=any&day=any&oauth_token=' + window.token + '&v=2013071', {}, function(data) {
       
       $(".foursquare-marker").remove();
@@ -180,53 +185,7 @@ var marker = "";
 			}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
 		<?php } ?>
 	<?php } ?>
-<?php } ?>
-		
-$(document).ready( function () {
-	$("#filter-metro").click( function() {
-		$(".filter-e").removeClass("active");
-		$("#filter-metro").addClass("active");
-		
-		$(".agency").hide();
-		$(".METRO").show();
-	});
-	
-	$("#filter-metrobus").click( function() {
-		$(".filter-e").removeClass("active");
-		$("#filter-metrobus").addClass("active");
-		
-		$(".agency").hide();
-		$(".MB").show();
-	});
-	
-	$("#filter-rtp").click( function() {
-		$(".filter-e").removeClass("active");
-		$("#filter-rtp").addClass("active");
-		
-		$(".agency").hide();
-		$(".RTP").show();
-	});
-	
-	$("#filter-ste").click( function() {
-		$(".filter-e").removeClass("active");
-		$("#filter-ste").addClass("active");
-		
-		$(".agency").hide();
-		$(".STE").show();
-	});
-	
-	$("#filter-sub").click( function() {
-		$(".filter-e").removeClass("active");
-		$("#filter-sub").addClass("active");
-		
-		$(".agency").hide();
-		$(".SUB").show();
-	});
-	
-	$(".agency").hide();
-	$(".METRO").show();
-});
- 
+<?php } ?> 
 </script>
 
 

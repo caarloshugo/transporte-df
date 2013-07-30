@@ -86,6 +86,17 @@ body { margin:0; padding:0; }
 	z-index: 99;
 }
 
+#connect {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	z-index: 99;
+}
+
+#connect-button {
+	cursor:pointer;
+}
+
 #info-marker2 input {
 	font-size: 13px;
 	background: #FFF;
