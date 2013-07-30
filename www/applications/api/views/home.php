@@ -134,7 +134,7 @@ body { margin:0; padding:0; }
 <div id="info-marker2">
 	<form name="search" action="" method="POST">
 		<input class="text" type="text" name="text_search" value="<?php echo (isset($_POST["text_search"])) ? $_POST["text_search"] : "";?>">
-		<input class="submit" type="submit" name="send" value="enviar">
+		<input class="submit" type="submit" name="send" value="buscar">
 	</form>
 </div>
 
