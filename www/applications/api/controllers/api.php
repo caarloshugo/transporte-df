@@ -23,7 +23,6 @@ class Api_Controller extends ZP_Controller {
 			$text_search  = str_replace(" ", "+", $text_search);
 			$text_search  = removeAcute($text_search);
 			
-			die(var_dump($text_search));
 			$vars["metrobus"] = $this->Api_Model->getStopsBySearchByAgency("MB", $text_search);
 			$vars["metro"] 	  = $this->Api_Model->getStopsBySearchByAgency("METRO", $text_search);
 			$vars["rtp"] 	  = $this->Api_Model->getStopsBySearchByAgency("RTP", $text_search);
