@@ -101,10 +101,10 @@ body { margin:0; padding:0; }
 	
 <div id='map-ui'>
     <ul>
-        <li><a href='#' class='filter-e active' id='filter-metro'>Metro</a></li>
-        <li><a href='#' class="filter-e" id='filter-metrobus'>Metrobus</a></li>
-        <li><a href='#' class="filter-e" id='filter-ste'>STE</a></li>
-        <li><a href='#' class='filter-e' id='filter-sub'>SUB</a></li>
+        <li><a href='' class='filter-e active' id='filter-metro'>Metro</a></li>
+        <li><a href='' class="filter-e" id='filter-metrobus'>Metrobus</a></li>
+        <li><a href='' class="filter-e" id='filter-ste'>STE</a></li>
+        <li><a href='' class='filter-e' id='filter-sub'>SUB</a></li>
     </ul>
 </div>
 
