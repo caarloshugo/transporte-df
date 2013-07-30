@@ -103,7 +103,7 @@ body { margin:0; padding:0; }
 	float: left;
 }
 .color-red { color:#e63e3e !important; }
-.submit { min-width: 43px !important; }
+.submit { min-width: 43px !important; height:38px; }
 </style>
 
 	
