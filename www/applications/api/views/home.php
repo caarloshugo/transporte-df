@@ -88,6 +88,13 @@ body { margin:0; padding:0; }
 	<p class="title-marker">Mapa del transporte de la ciudad de México</p>
 </div>
 
+
+<div id="info-marker">
+	<form action="" method="post">
+		<input type="text" name="search" value="San lazaro"><input type="submit" name="send" value="enviar">
+	</form>
+</div>
+
 <div id='map'></div>
 
 <script type='text/javascript'>
