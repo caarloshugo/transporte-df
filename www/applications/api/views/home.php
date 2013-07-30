@@ -72,6 +72,28 @@ body { margin:0; padding:0; }
 	opacity:0.7;
 }
 
+#info-marker2 {
+	position: absolute;
+	top: 70px;
+	left: 10px;
+	z-index: 99;
+}
+
+#info-marker2 input {
+	font-size: 13px;
+	background: #FFF;
+	color: #3C4E5A;
+	display: block;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #BBB;
+	border-bottom-width: 0;
+	min-width: 138px;
+	padding: 10px;
+	text-decoration: none;
+	opacity:0.7;
+}
+
 </style>
 
 	
@@ -89,7 +111,7 @@ body { margin:0; padding:0; }
 </div>
 
 
-<div id="info-marker">
+<div id="info-marker2">
 	<form action="" method="post">
 		<input type="text" name="search" value="San lazaro"><input type="submit" name="send" value="enviar">
 	</form>
