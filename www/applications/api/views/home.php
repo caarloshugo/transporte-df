@@ -202,7 +202,7 @@ var marker = "";
 		}).addTo(map);
 		
 		marker.on('click', function(e) {
-			$(".title-marker").html("<?php echo $stop["stop_name"];?>" + ' - <a href="#" onclick="getVenues(<?php echo $stop["stop_lat"];?>,<?php echo $stop["stop_lon"];?>)">Lugares cercanos</a>');
+			$(".title-marker").html("<?php echo $stop["stop_name"];?>" + ' - <a href="" onclick="getVenues(<?php echo $stop["stop_lat"];?>,<?php echo $stop["stop_lon"];?>)">Lugares cercanos</a>');
 		});
 		
 		marker.on('mouseover', function(e) {
