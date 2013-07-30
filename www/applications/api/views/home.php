@@ -52,6 +52,12 @@ var config = {
 	apiUrl: 'https://api.foursquare.com/'
 };
 
+if($.bbq.getState('access_token')) {	
+	//If there is a token in the state, consume it
+	var token = $.bbq.getState('access_token');
+	$.bbq.pushState({}, 2);
+}
+
 function foursquare_connect() {
 	if($.bbq.getState('access_token')) {	
 		//If there is a token in the state, consume it
@@ -157,7 +163,7 @@ var marker = "";
 
 <?php if(is_array($ste)) { ?>
 	<?php foreach($ste as $route) { ?>
-		<?php foreach($route["stops"] as $stop) { ?>
+		<?php foreach($route["stops"]http://107.22.236.217/transporte-df/ as $stop) { ?>
 			L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
 				icon: L.icon({
 					iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
