@@ -114,8 +114,8 @@ body { margin:0; padding:0; }
 
 
 <div id="info-marker2">
-	<form action="" method="post">
-		<input class="text" type="text" name="search" value="San lazaro">
+	<form action="index.php/search" method="post">
+		<input class="text" type="text" name="text_search" value="San lazaro">
 		<input class="submit" type="submit" name="send" value="enviar">
 	</form>
 </div>
