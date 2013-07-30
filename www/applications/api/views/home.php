@@ -114,7 +114,7 @@ body { margin:0; padding:0; }
 
 
 <div id="info-marker2">
-	<form action="" method="post">
+	<form action="/transporte-df" method="post">
 		<input class="text" type="text" name="text_search" value="San lázaro">
 		<input class="submit" type="submit" name="send" value="enviar">
 	</form>
