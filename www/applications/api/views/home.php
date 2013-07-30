@@ -102,10 +102,21 @@ body { margin:0; padding:0; }
 	
 <div id='map-ui'>
     <ul>
-        <li><span class='filter-e active' id='filter-metro'>Metro</span></li>
-        <li><span class="filter-e" id='filter-metrobus'>Metrobus</span></li>
-        <li><span class="filter-e" id='filter-ste'>STE</span></li>
-        <li><span class='filter-e' id='filter-sub'>SUB</span></li>
+		<?php if(is_array($metro)) { ?>
+			<li><span class='filter-e active' id='filter-metro'>Metro</span></li>
+        <?php } ?>
+        
+        <?php if(is_array($metrobus)) { ?>
+			<li><span class="filter-e" id='filter-metrobus'>Metrobus</span></li>
+        <?php } ?>
+        
+        <?php if(is_array($ste)) { ?>
+			<li><span class="filter-e" id='filter-ste'>STE</span></li>
+        <?php } ?>
+        
+        <?php if(is_array($sub)) { ?>
+			<li><span class='filter-e' id='filter-sub'>SUB</span></li>
+        <?php } ?>
     </ul>
 </div>
 
@@ -192,67 +203,75 @@ map.doubleClickZoom.disable();
 // map.scrollWheelZoom.disable();
 
 var marker = "";
-<?php foreach($metro as $route) { ?>
-	<?php foreach($route["stops"] as $stop) { ?>
-		marker = L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
-			icon: L.icon({
-				iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
-				iconSize    : [18, 18],
-				iconAnchor  : [0, 0],
-				popupAnchor : [0, 0],
-				className   : 'agency <?php echo $route["agency_id"];?>'
-			})
-		}).addTo(map);
-		
-		marker.on('click', function(e) {
-			$(".title-marker").html("<?php echo $stop["stop_name"];?>" + ' - <span onclick="getVenues(<?php echo $stop["stop_lat"];?>,<?php echo $stop["stop_lon"];?>)">Lugares cercanos</span>');
-		});
-		
-		marker.on('mouseover', function(e) {
-			$(".title-marker").html("<?php echo $stop["stop_name"];?>");
-		});
+<?php if(is_array($metro)) { ?>
+	<?php foreach($metro as $route) { ?>
+		<?php foreach($route["stops"] as $stop) { ?>
+			marker = L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+				icon: L.icon({
+					iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
+					iconSize    : [18, 18],
+					iconAnchor  : [0, 0],
+					popupAnchor : [0, 0],
+					className   : 'agency <?php echo $route["agency_id"];?>'
+				})
+			}).addTo(map);
+			
+			marker.on('click', function(e) {
+				$(".title-marker").html("<?php echo $stop["stop_name"];?>" + ' - <span onclick="getVenues(<?php echo $stop["stop_lat"];?>,<?php echo $stop["stop_lon"];?>)">Lugares cercanos</span>');
+			});
+			
+			marker.on('mouseover', function(e) {
+				$(".title-marker").html("<?php echo $stop["stop_name"];?>");
+			});
+		<?php } ?>
 	<?php } ?>
 <?php } ?>
 
-<?php foreach($metrobus as $route) { ?>
-	<?php foreach($route["stops"] as $stop) { ?>
-		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
-			icon: L.icon({
-				iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
-				iconSize    : [18, 18],
-				iconAnchor  : [0, 0],
-				popupAnchor : [0, 0],
-				className   : 'agency <?php echo $route["agency_id"];?>'
-			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+<?php if(is_array($metrobus)) { ?>
+	<?php foreach($metrobus as $route) { ?>
+		<?php foreach($route["stops"] as $stop) { ?>
+			L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+				icon: L.icon({
+					iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
+					iconSize    : [18, 18],
+					iconAnchor  : [0, 0],
+					popupAnchor : [0, 0],
+					className   : 'agency <?php echo $route["agency_id"];?>'
+				})
+			}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		<?php } ?>
 	<?php } ?>
 <?php } ?>
 
-<?php foreach($ste as $route) { ?>
-	<?php foreach($route["stops"] as $stop) { ?>
-		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
-			icon: L.icon({
-				iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
-				iconSize    : [18, 18],
-				iconAnchor  : [0, 0],
-				popupAnchor : [0, 0],
-				className   : 'agency <?php echo $route["agency_id"];?>'
-			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+<?php if(is_array($ste)) { ?>
+	<?php foreach($ste as $route) { ?>
+		<?php foreach($route["stops"] as $stop) { ?>
+			L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+				icon: L.icon({
+					iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
+					iconSize    : [18, 18],
+					iconAnchor  : [0, 0],
+					popupAnchor : [0, 0],
+					className   : 'agency <?php echo $route["agency_id"];?>'
+				})
+			}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		<?php } ?>
 	<?php } ?>
 <?php } ?>
 
-<?php foreach($sub as $route) { ?>
-	<?php foreach($route["stops"] as $stop) { ?>
-		L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
-			icon: L.icon({
-				iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
-				iconSize    : [18, 18],
-				iconAnchor  : [0, 0],
-				popupAnchor : [0, 0],
-				className   : 'agency <?php echo $route["agency_id"];?>'
-			})
-		}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+<?php if(is_array($sub)) { ?>
+	<?php foreach($sub as $route) { ?>
+		<?php foreach($route["stops"] as $stop) { ?>
+			L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
+				icon: L.icon({
+					iconUrl     : '<?php print $this->themePath; ?>/css/renders/marker-stroked-24.png',
+					iconSize    : [18, 18],
+					iconAnchor  : [0, 0],
+					popupAnchor : [0, 0],
+					className   : 'agency <?php echo $route["agency_id"];?>'
+				})
+			}).addTo(map).bindPopup('<p><?php echo $stop["stop_name"];?></p>');
+		<?php } ?>
 	<?php } ?>
 <?php } ?>
 		
