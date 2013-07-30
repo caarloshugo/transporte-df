@@ -108,7 +108,9 @@ var marker = "";
 <?php if(is_array($metro)) { ?>
 	<?php foreach($metro as $route) { ?>
 		
-		map.setView([<?php echo $route["stops"][0]["stop_lat"];?>, <?php echo $route["stops"][0]["stop_lon"];?>], 16, {pan: {animate: true}});
+		<?php if($search) { ?>
+			map.setView([<?php echo $route["stops"][0]["stop_lat"];?>, <?php echo $route["stops"][0]["stop_lon"];?>], 16, {pan: {animate: true}});
+		<?php }?>
 		
 		<?php foreach($route["stops"] as $stop) { ?>
 			marker = L.marker([<?php echo $stop["stop_lat"];?>, <?php echo $stop["stop_lon"];?>], {
