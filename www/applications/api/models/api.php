@@ -135,7 +135,9 @@ class Api_Model extends ZP_Model {
 				}
 			
 				$data[$key]["stops"] = $stops;
-			} 
+			} else {
+				unset($data[$key]);
+			}
 		}
 		
 		if($stopsb) return false;
