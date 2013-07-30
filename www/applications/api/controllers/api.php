@@ -16,12 +16,22 @@ class Api_Controller extends ZP_Controller {
 	}
 	
 	public function index() {
-		$vars["view"]     = $this->view("home", TRUE);
-		$vars["metrobus"] = $this->Api_Model->getStopsByAgency("MB");
-		$vars["metro"] 	  = $this->Api_Model->getStopsByAgency("METRO");
-		$vars["rtp"] 	  = $this->Api_Model->getStopsByAgency("RTP");
-		$vars["ste"] 	  = $this->Api_Model->getStopsByAgency("STE");
-		$vars["sub"] 	  = $this->Api_Model->getStopsByAgency("SUB");
+		$vars["view"] = $this->view("home", TRUE);
+		
+		if(isset($_POST["text_search"]) and $_POST["text_search"] != "") {
+			$text_search 	  = $_POST["text_search"];
+			$vars["metrobus"] = $this->Api_Model->getStopsBySearchByAgency("MB", $text_search);
+			$vars["metro"] 	  = $this->Api_Model->getStopsBySearchByAgency("METRO", $text_search);
+			$vars["rtp"] 	  = $this->Api_Model->getStopsBySearchByAgency("RTP", $text_search);
+			$vars["ste"] 	  = $this->Api_Model->getStopsBySearchByAgency("STE", $text_search);
+			$vars["sub"] 	  = $this->Api_Model->getStopsBySearchByAgency("SUB", $text_search);
+		} else {
+			$vars["metrobus"] = $this->Api_Model->getStopsByAgency("MB");
+			$vars["metro"] 	  = $this->Api_Model->getStopsByAgency("METRO");
+			$vars["rtp"] 	  = $this->Api_Model->getStopsByAgency("RTP");
+			$vars["ste"] 	  = $this->Api_Model->getStopsByAgency("STE");
+			$vars["sub"] 	  = $this->Api_Model->getStopsByAgency("SUB");
+		}
 
 		$this->render("content", $vars);
 	}
