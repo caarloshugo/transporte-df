@@ -78,9 +78,7 @@ class Api_Model extends ZP_Model {
 	
 	
 	/*Stops*/
-	public function getNearStops($lon, $lat) {
-		select stop_id,  ST_Distance(the_geom, (ST_GeomFromText('POINT(' || Cast('-99.125946' AS REAL) || ' ' || Cast('19.425447' AS REAL) || ')', 4326))) as distance FROM stops order by distance asc limit 10
-		
+	public function getNearStops($lon, $lat) {		
 		$query  = "select stop_id,  ST_Distance(the_geom, (ST_GeomFromText('POINT(' || Cast('" . $lon;
 		$query .= "' AS REAL) || ' ' || Cast('" . $lat;
 		$query .= "' AS REAL) || ')', 4326))) as distance FROM stops"
