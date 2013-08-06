@@ -90,6 +90,7 @@ class Api_Model extends ZP_Model {
 		
 		foreach($stops as $key=> $value) {
 			unset($stops[$key]["textsearch"]);
+			unset($stops[$key]["the_geom"]);
 			$stops[$key]["stop_name"] = utf8_decode($value["stop_name"]);
 			$stops[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
 		}
@@ -114,6 +115,7 @@ class Api_Model extends ZP_Model {
 		
 		foreach($data as $key=> $value) {
 			unset($data[$key]["textsearch"]);
+			unset($data[$key]["the_geom"]);
 			$data[$key]["stop_name"] = utf8_decode($value["stop_name"]);
 			$data[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
 		}
@@ -128,6 +130,8 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key=> $value) {
+			unset($data[$key]["textsearch"]);
+			unset($data[$key]["the_geom"]);
 			$data[$key]["stop_name"] = utf8_decode($value["stop_name"]);
 			$data[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
 		}
@@ -158,6 +162,7 @@ class Api_Model extends ZP_Model {
 				
 				foreach($stops as $key2 => $value) {
 					unset($stops[$key2]["textsearch"]);
+					unset($stops[$key2]["the_geom"]);
 					$stops[$key2]["stop_name"] = utf8_decode($value["stop_name"]);
 					$stops[$key2]["stop_desc"] = utf8_decode($value["stop_desc"]);
 				}
@@ -191,6 +196,7 @@ class Api_Model extends ZP_Model {
 			
 			foreach($stops as $key2 => $value) {
 				unset($stops[$key2]["textsearch"]);
+				unset($stops[$key2]["the_geom"]);
 				$stops[$key2]["stop_name"] = utf8_decode($value["stop_name"]);
 				$stops[$key2]["stop_desc"] = utf8_decode($value["stop_desc"]);
 			}
@@ -209,6 +215,7 @@ class Api_Model extends ZP_Model {
 		
 		foreach($stops as $key=> $value) {
 			unset($stops[$key]["textsearch"]);
+			unset($stops[$key]["the_geom"]);
 			$stops[$key]["stop_name"] = utf8_decode($value["stop_name"]);
 			$stops[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
 		}
