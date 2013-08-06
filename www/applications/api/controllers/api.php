@@ -98,7 +98,8 @@ class Api_Controller extends ZP_Controller {
 	
 	public function search($text_search) {
 		if($text_search !== "") {
-			$text = str_replace("+","%20",$text_search);
+			$text = str_replace("+", "%20", $text_search);
+			die(var_dump($text));
 			$text = strtolower($text);
 			$text = removeAcute($text);
 
