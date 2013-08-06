@@ -78,6 +78,10 @@ class Api_Model extends ZP_Model {
 	
 	
 	/*Stops*/
+	public function getNearStops($lon, $lat) {
+		die(var_dump($lon, $lat));
+	}
+	
 	public function getStops($idRoute) {
 		$query = "select stops.*,to_stop_id from stops left join transfers on stop_id=from_stop_id where route_id='" . $idRoute . "'";
 		$data  = $this->Db->query($query);

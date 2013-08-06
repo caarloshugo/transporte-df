@@ -41,6 +41,18 @@ class Api_Controller extends ZP_Controller {
 		$this->render("content", $vars);
 	}
 	
+	
+	/*Search near stop lat,lng*/
+	public function near($lon = "", $lat = "") {
+		if($lon !== "" and $lat !== "") {
+			$vars["stops"] = $this->Api_Model->getNearStops($lon, $lat);
+		} else {
+			$vars["stops"] = false;
+		}
+		
+		echo json_encode($vars);
+	}
+	
 	/*Agencies*/
 	public function agencies() {
 		$vars["agencies"] = $this->Api_Model->getAgencies();
