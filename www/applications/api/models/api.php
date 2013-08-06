@@ -84,7 +84,11 @@ class Api_Model extends ZP_Model {
 		$query .= "' AS REAL) || ')', 4326))) as distance FROM stops"
 		$query .= " left join transfers on stop_id=from_stop_id order by distance asc limit 5";
 		
-		$data  = $this->Db->query($query);
+		die(var_dump($query));
+		
+		$data = $this->Db->query($query);
+		
+		die(var_dump($data));
 		
 		if(!$data) return false;
 		
