@@ -100,6 +100,7 @@ class Api_Controller extends ZP_Controller {
 		if($text_search !== "") {
 			$text  = urldecode($text_search);
 			$text  = strtolower($text);
+			$text  = str_replace(" ", "+", $text);
 			$text  = removeAcute($text);
 
 			die(var_dump($text));
