@@ -98,7 +98,7 @@ class Api_Controller extends ZP_Controller {
 	
 	public function search($text_search) {
 		if($text_search !== "") {
-			die(var_dump($text));
+			die(var_dump($text_search));
 			$text  = urldecode($text_search);
 			
 			die(var_dump($text));
