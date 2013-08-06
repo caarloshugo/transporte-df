@@ -97,6 +97,7 @@ class Api_Controller extends ZP_Controller {
 	}
 	
 	public function search() {
+		die(var_dump($_POST));
 		if(isset($_POST["text_search"]) and $_POST["text_search"] != "") {
 			$text  = strtolower($_POST["text_search"]);
 			$text  = str_replace(" ", "+", $text);
