@@ -96,12 +96,15 @@ class Api_Controller extends ZP_Controller {
 		echo json_encode($vars);
 	}
 	
-	public function search() {
-		die(var_dump($_POST));
-		if(isset($_POST["text_search"]) and $_POST["text_search"] != "") {
+	public function search($text_search) {
+		if($text_search !== "") {
+			$text  = urldecode($text_search);
 			$text  = strtolower($_POST["text_search"]);
 			$text  = str_replace(" ", "+", $text);
 			$text  = removeAcute($text);
+
+			die(var_dump($text));
+				
 			$stops = $this->Api_Model->getStopsBySearch($text);
 			
 			if(!$stops) {
