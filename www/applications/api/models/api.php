@@ -221,8 +221,8 @@ class Api_Model extends ZP_Model {
 		}
 		
 		foreach($stops as $key => $stop) {
-			$route  = $this->Api_Model->getRoute($stop["route_id"]);
-			$agency = $this->Api_Model->getAgency($route[0]["agency_id"]);
+			$route  = $this->getRoute($stop["route_id"]);
+			$agency = $this->getAgency($route[0]["agency_id"]);
 			
 			$data["stops"][$key]["route"]  = $route[0];
 			$data["stops"][$key]["agency"] = $agency[0];
