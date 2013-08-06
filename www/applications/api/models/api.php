@@ -79,24 +79,31 @@ class Api_Model extends ZP_Model {
 	
 	/*Stops*/
 	public function getNearStops($lon, $lat) {		
-		$query  = "select stop_id,  ST_Distance(the_geom, (ST_GeomFromText('POINT(' || Cast('" . $lon;
+		$query  = "select  stops.*, to_stop_id,  ST_Distance(the_geom, (ST_GeomFromText('POINT(' || Cast('" . $lon;
 		$query .= "' AS REAL) || ' ' || Cast('" . $lat;
 		$query .= "' AS REAL) || ')', 4326))) as distance FROM stops";
 		$query .= " left join transfers on stop_id=from_stop_id order by distance asc limit 5";
 		
-		$data = $this->Db->query($query);
+		$stops = $this->Db->query($query);
+
+		if(!$stops) return false;
 		
-		die(var_dump($data));
-		
-		if(!$data) return false;
-		
-		foreach($data as $key=> $value) {
-			unset($data[$key]["textsearch"]);
-			$data[$key]["stop_name"] = utf8_decode($value["stop_name"]);
-			$data[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
+		foreach($stops as $key=> $value) {
+			unset($stops[$key]["textsearch"]);
+			$stops[$key]["stop_name"] = utf8_decode($value["stop_name"]);
+			$stops[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
 		}
 		
-		die(var_dump($data));
+		foreach($stops as $key => $stop) {
+			$route  = $this->getRoute($stop["route_id"]);
+			$agency = $this->getAgency($route[0]["agency_id"]);
+			
+			$data["stops"][$key]["route"]  = $route[0];
+			$data["stops"][$key]["agency"] = $agency[0];
+			$data["stops"][$key]["stop"]   = $stop;
+		}
+		
+		return $data;
 	}
 	
 	public function getStops($idRoute) {
@@ -196,14 +203,23 @@ class Api_Model extends ZP_Model {
 	
 	public function getStopsBySearch($text) {
 		$query = "select stops.*,to_stop_id from stops left join transfers on stop_id=from_stop_id where to_tsquery('" . $text . "') @@ textsearch";
-		$data  = $this->Db->query($query);
+		$stops = $this->Db->query($query);
 		
-		if(!$data) return false;
+		if(!$stops) return false;
 		
-		foreach($data as $key=> $value) {
-			unset($data[$key]["textsearch"]);
-			$data[$key]["stop_name"] = utf8_decode($value["stop_name"]);
-			$data[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
+		foreach($stops as $key=> $value) {
+			unset($stops[$key]["textsearch"]);
+			$stops[$key]["stop_name"] = utf8_decode($value["stop_name"]);
+			$stops[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
+		}
+		
+		foreach($stops as $key => $stop) {
+			$route  = $this->Api_Model->getRoute($stop["route_id"]);
+			$agency = $this->Api_Model->getAgency($route[0]["agency_id"]);
+			
+			$data["stops"][$key]["route"]  = $route[0];
+			$data["stops"][$key]["agency"] = $agency[0];
+			$data["stops"][$key]["stop"]   = $stop;
 		}
 		
 		return $data;
