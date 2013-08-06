@@ -68,6 +68,6 @@ $routes = array(
 		"application" => "api",
 		"controller"  => "api",
 		"method"	  => "near",
-		"params"	  => array(segment(1), segment(2)
+		"params"	  => array(segment(1), segment(2))
 	)
 );
