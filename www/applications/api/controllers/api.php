@@ -46,7 +46,7 @@ class Api_Controller extends ZP_Controller {
 	public function near($ll) {
 		if($ll !== "") {
 			$array = explode("," , $ll);
-			die(var_dump(count($array)));
+			
 			if(count($array) == 2) {
 				$lon   = $array[0];
 				$lat   = $array[1];
