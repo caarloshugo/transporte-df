@@ -43,14 +43,22 @@ class Api_Controller extends ZP_Controller {
 	
 	
 	/*Search near stop lat,lng*/
-	public function near($lon = "", $lat = "") {
-		if($lon !== "" and $lat !== "") {
-			$stops = $this->Api_Model->getNearStops($lon, $lat);
-			
-			if(!$stops) {
+	public function near($ll) {
+		if($ll !== "") {
+			$array = explode("," , $ll);
+			die(var_dump($array));
+			if(count($array) == 2) {
+				$lon   = $array[0];
+				$lat   = $array[1];
+				$stops = $this->Api_Model->getNearStops($lon, $lat);
+				
+				if(!$stops) {
+					$vars["stops"] = false;
+				} else {				
+					$vars = $stops;
+				}
+			} else {
 				$vars["stops"] = false;
-			} else {				
-				$vars = $stops;
 			}
 		} else {
 			$vars["stops"] = false;
