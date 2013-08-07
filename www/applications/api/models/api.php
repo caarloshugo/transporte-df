@@ -78,11 +78,11 @@ class Api_Model extends ZP_Model {
 	
 	
 	/*Stops*/
-	public function getNearStops($lon, $lat) {		
+	public function getNearStops($lon, $lat, $limit = 3) {		
 		$query  = "select  stops.*, to_stop_id,  ST_Distance(the_geom, (ST_GeomFromText('POINT(' || Cast('" . $lon;
 		$query .= "' AS REAL) || ' ' || Cast('" . $lat;
 		$query .= "' AS REAL) || ')', 4326))) as distance FROM stops";
-		$query .= " left join transfers on stop_id=from_stop_id order by distance asc limit 5";
+		$query .= " left join transfers on stop_id=from_stop_id order by distance asc limit " . $limit;
 		
 		$stops = $this->Db->query($query);
 

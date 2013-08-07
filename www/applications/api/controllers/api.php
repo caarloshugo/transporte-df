@@ -42,20 +42,44 @@ class Api_Controller extends ZP_Controller {
 	}
 	
 	
-	/*Search near stop lat,lng*/
-	public function near($ll) {
+	/*Search near stop lon,lat*/
+	public function near($ll = "") {
 		if($ll !== "") {
 			$array = explode("," , $ll);
 			
 			if(count($array) == 2) {
-				$lon   = $array[0];
-				$lat   = $array[1];
-				$stops = $this->Api_Model->getNearStops($lon, $lat);
+				$stops = $this->Api_Model->getNearStops($array[0], $array[1]);
 				
 				if(!$stops) {
 					$vars["stops"] = false;
 				} else {				
 					$vars = $stops;
+				}
+			} else {
+				$vars["stops"] = false;
+			}
+		} else {
+			$vars["stops"] = false;
+		}
+		
+		echo json_encode($vars);
+	}
+	
+	/*Search near stop lon,lat*/
+	public function trip($orig = "", $dest = "") {
+		if($orig !== "" and $dest !== "") {
+			$array_orig = explode("," , $orig);
+			$array_dest = explode("," , $dest);
+			
+			if(count($array_orig) == 2 and count($array_dest) == 2) {
+				$stops_orig = $this->Api_Model->getNearStops($array_orig[0], $array_orig[1], 1);
+				$stops_dest = $this->Api_Model->getNearStops($array_dest[0], $array_dest[1], 1);
+				
+				if(!$stops_orig and !$stops_dest) {
+					$vars["stops"] = false;
+				} else {				
+					$vars["orig"] = $stops_orig;
+					$vars["dest"] = $stops_dest;
 				}
 			} else {
 				$vars["stops"] = false;

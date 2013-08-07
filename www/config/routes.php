@@ -69,5 +69,12 @@ $routes = array(
 		"controller"  => "api",
 		"method"	  => "near",
 		"params"	  => array(segment(1))
+	),
+	9 => array(
+		"pattern"	  => "/^trip/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "trip",
+		"params"	  => array(segment(1), segment(2))
 	)
 );
