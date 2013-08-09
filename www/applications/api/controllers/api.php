@@ -41,6 +41,10 @@ class Api_Controller extends ZP_Controller {
 		$this->render("content", $vars);
 	}
 	
+	/*Test API POST*/
+	public function post() {
+		die(var_dump($_POST));
+	}
 	
 	/*Search near stop lon,lat*/
 	public function near($ll = "") {
