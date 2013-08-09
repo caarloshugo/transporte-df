@@ -8,11 +8,12 @@ CREATE TABLE reports (
 	image_url 	varchar(255)[],
 	report_date date,
 	report_time	time,
+	report_lat	varchar(255),
+	report_lon	varchar(255),
+	the_geom	GEOMETRY,
 	status    	boolean default true,
 	PRIMARY KEY(report_id)
 );
-
-// category - type: report/abuse
 
 CREATE TABLE categories (
 	category_id serial,

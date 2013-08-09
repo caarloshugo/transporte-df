@@ -41,7 +41,15 @@ class Api_Controller extends ZP_Controller {
 		$this->render("content", $vars);
 	}
 	
-	/*Test API POST*/
+	/*Reports*/
+	public function addReport() {
+		die(var_dump($_POST));
+	}
+	
+	public function report($idReport) {
+		die(var_dump($idReport));
+	}
+	
 	public function reports() {
 		die(var_dump($_POST));
 	}
