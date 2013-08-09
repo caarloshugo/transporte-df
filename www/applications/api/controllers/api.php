@@ -42,7 +42,7 @@ class Api_Controller extends ZP_Controller {
 	}
 	
 	/*Test API POST*/
-	public function post() {
+	public function reports() {
 		die(var_dump($_POST));
 	}
 	

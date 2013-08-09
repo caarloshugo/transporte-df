@@ -78,10 +78,10 @@ $routes = array(
 		"params"	  => array(segment(1), segment(2))
 	),
 	10 => array(
-		"pattern"	  => "/^post/",
+		"pattern"	  => "/^reports/",
 		"application" => "api",
 		"controller"  => "api",
-		"method"	  => "post",
+		"method"	  => "reports",
 		"params"	  => array()
 	)
 );
