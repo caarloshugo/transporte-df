@@ -43,7 +43,8 @@ class Api_Controller extends ZP_Controller {
 	
 	/*Test API POST*/
 	public function post() {
-		die(var_dump($_POST));
+		parse_str(file_get_contents("php://input"), $data);
+		die(var_dump($data));
 	}
 	
 	/*Search near stop lon,lat*/
