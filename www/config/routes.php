@@ -76,5 +76,12 @@ $routes = array(
 		"controller"  => "api",
 		"method"	  => "trip",
 		"params"	  => array(segment(1), segment(2))
+	),
+	10 => array(
+		"pattern"	  => "/^json/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "json",
+		"params"	  => array()
 	)
 );
