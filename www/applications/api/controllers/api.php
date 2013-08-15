@@ -46,6 +46,8 @@ class Api_Controller extends ZP_Controller {
 		$data = $_POST;
 				
 		if(isset($data["new"])) {
+			unset($data["new"]);
+			
 			$vars["report"] = $this->Api_Model->addReport($data);
 		} elseif(isset($data["idReport"]) and is_numeric($data["idReport"])) {
 			$vars["report"] = $this->Api_Model->editReport($data["idReport"], $data);
