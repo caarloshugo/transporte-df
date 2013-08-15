@@ -43,7 +43,19 @@ class Api_Controller extends ZP_Controller {
 	
 	/*Reports*/
 	public function addReport() {
-		die(var_dump($_POST));
+		$data = $_POST;
+		
+		die(var_dump($data));
+		
+		if(isset($data["new"])) {
+			die("nuevo");
+		} elseif(isset($data["idReport"])) {
+			die("ya existe");
+		}
+	}
+	
+	public function likeReport($idReport) {
+		
 	}
 	
 	public function report($idReport) {
