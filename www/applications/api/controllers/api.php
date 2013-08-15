@@ -68,8 +68,8 @@ class Api_Controller extends ZP_Controller {
 		echo json_encode($vars);
 	}
 	
-	public function reports() {
-		$vars["reports"] = $this->Api_Model->getReports();
+	public function reports($offset = 0) {
+		$vars["reports"] = $this->Api_Model->getReports($offset);
 		
 		echo json_encode($vars);
 	}
