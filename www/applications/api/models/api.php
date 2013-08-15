@@ -249,7 +249,7 @@ class Api_Model extends ZP_Model {
 
 			$data["stop_id"]         = $idStop;
 			$data["image_url"]       = "{hola1, hola2}";
-			$data["report_date"]     = "CAST('" . now(3) . "' AS DATE)";
+			$data["report_date"]     = "CAST('" . date("Y-m-d H:i:s", time()) . "' AS DATE)";
 			$data["report_textdate"] = decode(now(2));
 			
 			$result = $this->Db->insert("reports", $data, "report_id");

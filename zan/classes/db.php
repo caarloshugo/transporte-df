@@ -824,10 +824,20 @@ class ZP_Db extends ZP_Load {
 			foreach($data as $field => $value) {
 				if($i === $count) {
 					$_fields .= "$field";
-					$_values .= "'$value'";
+					
+					if($field == "report_date") {
+						$_values .= "$value, ";
+					} else {
+						$_values .= "'$value', ";
+					}
 				} else {
 					$_fields .= "$field, ";
-					$_values .= "'$value', ";	
+					
+					if($field == "report_date") {
+						$_values .= "$value, ";
+					} else {
+						$_values .= "'$value', ";
+					}
 				}
 						
 				$i++;	
