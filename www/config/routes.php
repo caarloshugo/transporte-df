@@ -85,17 +85,17 @@ $routes = array(
 		"params"	  => array()
 	),
 	11 => array(
-		"pattern"	  => "/^report/",
-		"application" => "api",
-		"controller"  => "api",
-		"method"	  => "report",
-		"params"	  => array(segment(1))
-	),
-	12 => array(
 		"pattern"	  => "/^reports/",
 		"application" => "api",
 		"controller"  => "api",
 		"method"	  => "reports",
 		"params"	  => array()
+	),
+	12 => array(
+		"pattern"	  => "/^report/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "report",
+		"params"	  => array(segment(1))
 	)
 );
