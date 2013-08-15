@@ -834,6 +834,8 @@ class ZP_Db extends ZP_Load {
 			}
 			
 			$query = "INSERT INTO $table ($_fields) VALUES ($_values)";
+			
+			die(var_dump($query));
 		} else {
 			return FALSE;
 		}	
