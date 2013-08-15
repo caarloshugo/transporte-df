@@ -219,6 +219,8 @@ class ZP_Files extends ZP_Load {
 			return FALSE;
 		}
 		
+		die(var_dump($dir));
+		
 		$upload = $this->upload($dir);
 	
 		if(!$upload["upload"]) {			

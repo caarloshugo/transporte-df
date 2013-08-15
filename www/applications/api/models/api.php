@@ -245,8 +245,6 @@ class Api_Model extends ZP_Model {
 				$data["image_url"] = $upload;
 			}
 			
-			die(var_dump($_FILES));
-			
 			//array to postgres
 			$idStop = "{";
 			
