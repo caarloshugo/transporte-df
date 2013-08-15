@@ -826,9 +826,9 @@ class ZP_Db extends ZP_Load {
 					$_fields .= "$field";
 					
 					if($field == "report_date") {
-						$_values .= "$value, ";
+						$_values .= "$value";
 					} else {
-						$_values .= "'$value', ";
+						$_values .= "'$value'";
 					}
 				} else {
 					$_fields .= "$field, ";
@@ -844,8 +844,6 @@ class ZP_Db extends ZP_Load {
 			}
 			
 			$query = "INSERT INTO $table ($_fields) VALUES ($_values)";
-			
-			die(var_dump($query));
 		} else {
 			return FALSE;
 		}	
