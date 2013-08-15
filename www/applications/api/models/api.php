@@ -240,7 +240,7 @@ class Api_Model extends ZP_Model {
 			$idStop = "{";
 			
 			foreach($data["stop_id"] as $value) {
-				$idStop .= "'" . $value . "',";
+				$idStop .= $value . ",";
 			}
 			
 			unset($data["stop_id"]);
@@ -248,8 +248,8 @@ class Api_Model extends ZP_Model {
 			$idStop = $idStop . "}";
 
 			$data["stop_id"]         = $idStop;
-			$data["image_url"]       = "{'hola1', 'hola2'}";
-			$data["report_date"]     = now(4);
+			$data["image_url"]       = "{hola1, hola2}";
+			$data["report_date"]     = "CAST('" . now(4) . "' AS DATE)";
 			$data["report_textdate"] = decode(now(2));
 			
 			$result = $this->Db->insert("reports", $data, "report_id");
