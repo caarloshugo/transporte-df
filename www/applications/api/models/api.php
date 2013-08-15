@@ -237,7 +237,18 @@ class Api_Model extends ZP_Model {
 		if($data and is_array($data)) {
 			//$this->Files = $this->core("Files");
 			//$upload = $this->Files->uploadImage("www/lib/uploads/");
-			$data["image_url"]       = array("hola", "hola2");
+			$idStop = "{";
+			
+			foreach($data["stop_id"] as $value) {
+				$idStop .=  . "'" . $value . "',";
+			}
+			
+			unset($data["stop_id"]);
+			$idStop = rtrim($idStop, ',');
+			$idStop = $idStop . "}";
+
+			$data["stop_id"]         = $idStop;
+			$data["image_url"]       = "{'hola1', 'hola2'}";
 			$data["report_date"]     = now(4);
 			$data["report_textdate"] = decode(now(2));
 			
