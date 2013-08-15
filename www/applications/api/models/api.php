@@ -240,7 +240,7 @@ class Api_Model extends ZP_Model {
 			$idStop = "{";
 			
 			foreach($data["stop_id"] as $value) {
-				$idStop .=  . "'" . $value . "',";
+				$idStop .= "'" . $value . "',";
 			}
 			
 			unset($data["stop_id"]);
