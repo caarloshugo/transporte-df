@@ -235,8 +235,19 @@ class Api_Model extends ZP_Model {
 	/*Reports*/
 	public function addReport($data = false) {
 		if($data and is_array($data)) {
-			//$this->Files = $this->core("Files");
-			//$upload = $this->Files->uploadImage("www/lib/uploads/");
+			//Upload File
+			$this->Files = $this->core("Files");
+			$upload = $this->Files->uploadImage("www/lib/uploads/images/", "file", "normal");
+			
+			if($upload) {
+				$data["image_url"] = $upload;
+			} else {
+				$data["image_url"] = $upload;
+			}
+			
+			die(var_dump($upload));
+			
+			//array to postgres
 			$idStop = "{";
 			
 			foreach($data["stop_id"] as $value) {
@@ -246,9 +257,9 @@ class Api_Model extends ZP_Model {
 			unset($data["stop_id"]);
 			$idStop = rtrim($idStop, ',');
 			$idStop = $idStop . "}";
-
+			
+			//data to insert
 			$data["stop_id"]         = $idStop;
-			$data["image_url"]       = "{hola1, hola2}";
 			$data["report_date"]     = "CAST('" . date("Y-m-d H:i:s", time()) . "' AS DATE)";
 			$data["report_textdate"] = decode(now(2));
 			
