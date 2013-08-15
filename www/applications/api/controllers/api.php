@@ -54,12 +54,7 @@ class Api_Controller extends ZP_Controller {
 		die(var_dump($_POST));
 	}
 	
-	/*Search near stop lon,lat*/
-	public function json() {
-		$vars["stops"] = $this->Api_Model->getJsonStops();
-		echo json_encode($vars);
-	}
-	
+	/*Search near stop lon,lat*/	
 	public function near($ll = "") {
 		if($ll !== "") {
 			$array = explode("," , $ll);

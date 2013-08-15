@@ -231,17 +231,4 @@ class Api_Model extends ZP_Model {
 		
 		return $data;
 	}
-	
-	public function getJsonStops() {
-		$query = "select stop_id, stop_name from stops where route_id!=''";
-		$data  = $this->Db->query($query);
-		
-		if(!$data) return false;
-		
-		foreach($data as $key=> $value) {
-			$data[$key]["stop_name"] = utf8_decode($value["stop_name"]);
-		}
-		
-		return $data;
-	}
 }

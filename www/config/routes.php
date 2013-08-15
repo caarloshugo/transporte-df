@@ -97,12 +97,5 @@ $routes = array(
 		"controller"  => "api",
 		"method"	  => "reports",
 		"params"	  => array()
-	),
-	13 => array(
-		"pattern"	  => "/^json/",
-		"application" => "api",
-		"controller"  => "api",
-		"method"	  => "json",
-		"params"	  => array()
 	)
 );
