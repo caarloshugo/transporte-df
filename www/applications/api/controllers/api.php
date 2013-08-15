@@ -46,10 +46,14 @@ class Api_Controller extends ZP_Controller {
 		$data = $_POST;
 				
 		if(isset($data["new"])) {
-			die("nuevo");
+			$vars["report"] = $this->Api_Model->addReport($data);
 		} elseif(isset($data["idReport"]) and is_numeric($data["idReport"])) {
-			die("ya existe");
+			$vars["report"] = $this->Api_Model->editReport($data["idReport"], $data);
+		} else {
+			$vars["error"] = "Error en el request";
 		}
+		
+		echo json_encode($vars);
 	}
 	
 	public function likeReport($idReport) {

@@ -231,4 +231,27 @@ class Api_Model extends ZP_Model {
 		
 		return $data;
 	}
+	
+	/*Reports*/
+	public function addReport($data = false) {
+		if($data and is_array($data)) {
+			//$this->Files = $this->core("Files");
+			//$upload = $this->Files->uploadImage("www/lib/uploads/");
+			$data["report_date"]     = now(4);
+			$data["report_textdate"] = decode(now(2));
+			
+			die(var_dump($data));
+			$result = $this->Db->insert("reports", $data, "report_id");
+		} else {
+			return false;
+		}
+	}
+	
+	public function editReport($idReport, $data = false) {
+		if($data and is_array($data)) {
+			
+		} else {
+			return false;
+		}
+	}
 }
