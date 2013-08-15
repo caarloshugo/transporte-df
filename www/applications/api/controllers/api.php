@@ -47,7 +47,7 @@ class Api_Controller extends ZP_Controller {
 				
 		if(isset($data["new"])) {
 			die("nuevo");
-		} elseif(isset($data["idReport"])) {
+		} elseif(isset($data["idReport"]) and is_numeric($data["idReport"])) {
 			die("ya existe");
 		}
 	}
