@@ -237,11 +237,13 @@ class Api_Model extends ZP_Model {
 		if($data and is_array($data)) {
 			//$this->Files = $this->core("Files");
 			//$upload = $this->Files->uploadImage("www/lib/uploads/");
+			$data["image_url"]       = array("hola", "hola2");
 			$data["report_date"]     = now(4);
 			$data["report_textdate"] = decode(now(2));
 			
-			die(var_dump($data));
 			$result = $this->Db->insert("reports", $data, "report_id");
+			
+			die(var_dump($result));
 		} else {
 			return false;
 		}
