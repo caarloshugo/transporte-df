@@ -254,7 +254,7 @@ class Api_Model extends ZP_Model {
 			
 			$result = $this->Db->insert("reports", $data, "report_id");
 			
-			die(var_dump($result));
+			return $result;
 		} else {
 			return false;
 		}
@@ -266,5 +266,33 @@ class Api_Model extends ZP_Model {
 		} else {
 			return false;
 		}
+	}
+	
+	public function getReport($idReport) {
+		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  where report_id=" . $idReport . " order by report_id desc";
+		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		foreach($data as $key=> $value) {
+			$data[$key]["title"] = utf8_decode($value["title"]);
+			$data[$key]["descr"] = utf8_decode($value["descr"]);
+		}
+		
+		return $data;
+	}
+	
+	public function getReports() {
+		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id order by report_id desc";
+		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		foreach($data as $key=> $value) {
+			$data[$key]["title"] = utf8_decode($value["title"]);
+			$data[$key]["descr"] = utf8_decode($value["descr"]);
+		}
+		
+		return $data;
 	}
 }

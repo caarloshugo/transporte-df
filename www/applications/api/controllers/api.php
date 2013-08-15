@@ -58,16 +58,24 @@ class Api_Controller extends ZP_Controller {
 		echo json_encode($vars);
 	}
 	
-	public function likeReport($idReport) {
+	public function report($idReport = false) {
+		if($idReport and is_numeric($idReport)) {
+			$vars["report"] = $this->Api_Model->getReport($idReport);
+		} else {
+			$vars["report"] = false;
+		}
 		
-	}
-	
-	public function report($idReport) {
-		die(var_dump($idReport));
+		echo json_encode($vars);
 	}
 	
 	public function reports() {
-		die(var_dump($_POST));
+		$vars["reports"] = $this->Api_Model->getReports();
+		
+		echo json_encode($vars);
+	}
+	
+	public function likeReport($idReport) {
+		
 	}
 	
 	/*Search near stop lon,lat*/	
