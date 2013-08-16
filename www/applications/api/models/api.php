@@ -237,21 +237,21 @@ class Api_Model extends ZP_Model {
 		if($data and is_array($data)) {
 			//array stops to postgres and query to search similar reports
 			$idStop = "{";
-			$stops  = "";
+			$where  = "where";
 			
 			if(is_array($data["stop_id"])) {
 				foreach($data["stop_id"] as $value) {
 					$idStop .= $value . ",";
-					$stops  .= "'" . $value . "',";
+					$where  .= " '" . $value . "' = ANY(stop_id) or";
 				}
 			} else {
 				$idStop .= $data["stop_id"] . ",";
-				$stops  .= "'" . $data["stop_id"] . "',";
+				$where  .= " '" . $data["stop_id"] . "'  = ANY(stop_id) or";
 			}
 			
 			unset($data["stop_id"]);
 			$idStop = rtrim($idStop, ',');
-			$stops  = rtrim($stops, ',');
+			$where  = rtrim($where, 'or');
 			$idStop = $idStop . "}";
 			
 			//Search similar reports in stops
@@ -327,8 +327,9 @@ class Api_Model extends ZP_Model {
 		return $data;
 	}
 	
-	public function getReportByStop($stop_id) {
-		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  where stop_id in(" . $stop_id . ") order by report_id desc";
+	public function getReportByStop($where) {
+		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  " . $where ." order by report_id desc";
+		die(var_dump($query));
 		$data  = $this->Db->query($query);
 		
 		return $data;
