@@ -236,6 +236,7 @@ class Api_Model extends ZP_Model {
 	public function addReport($data = false) {
 		if($data and is_array($data)) {
 			//Upload File
+			die(var_dump($_FILES));
 			$this->Files = $this->core("Files");
 			$upload = $this->Files->uploadImage("www/lib/uploads/images/", "file", "normal");
 			

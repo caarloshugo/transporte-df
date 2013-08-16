@@ -209,6 +209,8 @@ class ZP_Files extends ZP_Load {
 			@mkdir($dir, 0777);
 		}
 		
+		die(var_dump($dir));
+		
 		if(FILES($inputName, "name")) {
 			$this->filename  = FILES($inputName, "name");
 			$this->fileType  = FILES($inputName, "type");
