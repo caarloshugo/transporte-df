@@ -261,7 +261,7 @@ class Api_Model extends ZP_Model {
 			$data["stop_id"]         = $idStop;
 			$data["report_date"]     = "CAST('" . date("Y-m-d H:i:s", time()) . "' AS DATE)";
 			$data["report_time"]     = "CAST('" . date("H:i:s", time()) . "' AS TIME)";
-			$data["report_textdate"] = decode(now(2, FALSE, "Spanish"));
+			$data["report_textdate"] = decode(now(2));
 			
 			$result = $this->Db->insert("reports", $data, "report_id");
 			
