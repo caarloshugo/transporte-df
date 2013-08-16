@@ -242,10 +242,9 @@ class Api_Model extends ZP_Model {
 			if($upload) {
 				$data["image_url"] = $upload;
 			} else {
-				$data["image_url"] = $upload;
+				$data["image_url"] = "www/lib/uploads/images/default.png";
 			}
 			
-			die(var_dump($data));
 			//array to postgres
 			$idStop = "{";
 			
