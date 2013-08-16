@@ -220,18 +220,17 @@ class ZP_Files extends ZP_Load {
 		}
 		
 		$upload = $this->upload($dir);
-		die(var_dump($upload));
+		
 		if(!$upload["upload"]) {			
 			return FALSE;
 		}
 		
-		$this->Images = $this->core("Images");
-		
-		$this->Images->load($dir . $upload["filename"]);
-		
 		if($type === "normal") {
 			return $dir . $upload["filename"];
-		} elseif($type === "resize") {					
+		} elseif($type === "resize") {
+			$this->Images = $this->core("Images");
+			$this->Images->load($dir . $upload["filename"]);
+					
 			if($small) {
 				$size["small"] = $this->Images->getResize("small", $dir, $upload["filename"]);	
 			}
@@ -248,6 +247,9 @@ class ZP_Files extends ZP_Load {
 				
 			return $size;
 		} elseif($type === "mural") { 
+			$this->Images = $this->core("Images");
+			$this->Images->load($dir . $upload["filename"]);
+			
 			if($this->Images->getWidth() !== _muralWidth and $this->Images->getHeight() !== _muralHeight) { 
 				unlink($dir . $upload["filename"]); 
 				
