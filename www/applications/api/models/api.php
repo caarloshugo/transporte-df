@@ -240,9 +240,9 @@ class Api_Model extends ZP_Model {
 			$upload = $this->Files->uploadImage("www/lib/uploads/images/", "file", "normal");
 			
 			if($upload) {
-				$data["image_url"] = $upload;
+				$data["image_url"] = "{" . $upload . "}";
 			} else {
-				$data["image_url"] = "www/lib/uploads/images/default.png";
+				$data["image_url"] = "{www/lib/uploads/images/default.png}";
 			}
 			
 			//array to postgres
