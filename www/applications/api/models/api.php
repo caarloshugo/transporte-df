@@ -238,15 +238,20 @@ class Api_Model extends ZP_Model {
 			//array stops to postgres and query to search similar reports
 			$idStop = "{";
 			$stops  = "";
-			die(var_dump($data));
-			foreach($data["stop_id"] as $value) {
-				$idStop .= $value . ",";
-				$stops  .= "'" . $value . "',";
+			
+			if(is_array($data["stop_id"])) {
+				foreach($data["stop_id"] as $value) {
+					$idStop .= $value . ",";
+					$stops  .= "'" . $value . "',";
+				}
+			} else {
+				$idStop .= $data["stop_id"] . ",";
+				$stops  .= "'" . $data["stop_id"] . "',";
 			}
 			
 			unset($data["stop_id"]);
-			$stops  = rtrim($stops, ',');
 			$idStop = rtrim($idStop, ',');
+			$stops  = rtrim($stops, ',');
 			$idStop = $idStop . "}";
 			
 			die(var_dump($stops));
