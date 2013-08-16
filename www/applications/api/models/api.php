@@ -245,7 +245,6 @@ class Api_Model extends ZP_Model {
 				$data["image_url"] = "{www/lib/uploads/images/default.png}";
 			}
 			
-			die(var_dump($data));
 			//array to postgres
 			$idStop = "{";
 			
@@ -260,6 +259,7 @@ class Api_Model extends ZP_Model {
 			//data to insert
 			$data["stop_id"]         = $idStop;
 			$data["report_date"]     = "CAST('" . date("Y-m-d H:i:s", time()) . "' AS DATE)";
+			$data["report_time"]     = "CAST('" . date("H:i:s", time()) . "' AS TIME)";
 			$data["report_textdate"] = decode(now(2));
 			
 			$result = $this->Db->insert("reports", $data, "report_id");
