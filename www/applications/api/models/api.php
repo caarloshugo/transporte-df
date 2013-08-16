@@ -254,10 +254,10 @@ class Api_Model extends ZP_Model {
 			$stops  = rtrim($stops, ',');
 			$idStop = $idStop . "}";
 			
-			die(var_dump($stops));
-			
 			//Search similar reports in stops
 			$result = $this->getReportByStop($stops);
+			
+			die(var_dump($result));
 			if($result) {
 				return $array["similar"] = $result;
 			}
