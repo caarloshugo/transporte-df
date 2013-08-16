@@ -825,7 +825,7 @@ class ZP_Db extends ZP_Load {
 				if($i === $count) {
 					$_fields .= "$field";
 					
-					if($field == "report_date") {
+					if($field == "report_date" or $field == "report_time") {
 						$_values .= "$value";
 					} else {
 						$_values .= "'$value'";
@@ -833,7 +833,7 @@ class ZP_Db extends ZP_Load {
 				} else {
 					$_fields .= "$field, ";
 					
-					if($field == "report_date") {
+					if($field == "report_date" or $field == "report_time") {
 						$_values .= "$value, ";
 					} else {
 						$_values .= "'$value', ";
