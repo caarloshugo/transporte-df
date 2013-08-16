@@ -235,6 +235,28 @@ class Api_Model extends ZP_Model {
 	/*Reports*/
 	public function addReport($data = false) {
 		if($data and is_array($data)) {
+			//array stops to postgres and query to search similar reports
+			$idStop = "{";
+			$stops  = "";
+			
+			foreach($data["stop_id"] as $value) {
+				$idStop .= $value . ",";
+				$stops  .= "'" . $value . "',";
+			}
+			
+			$stops = rtrim($stops, ',');
+			
+			unset($data["stop_id"]);
+			$idStop = rtrim($idStop, ',');
+			$idStop = $idStop . "}";
+			
+			die(var_dump($stops));
+			
+			//Search similar reports in stops
+			$result = $this->getReportByStop($stops);
+			if($result) {
+				return $array["similar"] = $result;
+			}
 			
 			//Upload image => array postgres
 			$this->Files = $this->core("Files");
@@ -245,17 +267,6 @@ class Api_Model extends ZP_Model {
 			} else {
 				$data["image_url"] = "{www/lib/uploads/images/default.png}";
 			}
-			
-			//array stops to postgres
-			$idStop = "{";
-			
-			foreach($data["stop_id"] as $value) {
-				$idStop .= $value . ",";
-			}
-			
-			unset($data["stop_id"]);
-			$idStop = rtrim($idStop, ',');
-			$idStop = $idStop . "}";
 			
 			//data to insert
 			$data["stop_id"]         = $idStop;
@@ -308,6 +319,13 @@ class Api_Model extends ZP_Model {
 			$data[$key]["title"] = utf8_decode($value["title"]);
 			$data[$key]["descr"] = utf8_decode($value["descr"]);
 		}
+		
+		return $data;
+	}
+	
+	public function getReportByStop($stop_id) {
+		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  where stop_id in(" . $stop_id . ") order by report_id desc";
+		$data  = $this->Db->query($query);
 		
 		return $data;
 	}
