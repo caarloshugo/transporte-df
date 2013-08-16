@@ -246,7 +246,7 @@ class Api_Model extends ZP_Model {
 				}
 			} else {
 				$idStop .= $data["stop_id"] . ",";
-				$where  .= " '" . $data["stop_id"] . "'  = ANY(stop_id) or";
+				$where  .= " '" . $data["stop_id"] . "' = ANY(stop_id) or";
 			}
 			
 			unset($data["stop_id"]);
@@ -257,7 +257,6 @@ class Api_Model extends ZP_Model {
 			//Search similar reports in stops
 			$result = $this->getReportByStop($where);
 			
-			die(var_dump($result));
 			if($result) {
 				return $array["similar"] = $result;
 			}
@@ -329,7 +328,6 @@ class Api_Model extends ZP_Model {
 	
 	public function getReportByStop($where) {
 		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  " . $where ." order by report_id desc";
-		die(var_dump($query));
 		$data  = $this->Db->query($query);
 		
 		return $data;
