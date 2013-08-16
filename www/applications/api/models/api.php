@@ -258,7 +258,9 @@ class Api_Model extends ZP_Model {
 			$result = $this->getReportByStop($where);
 			
 			if($result) {
-				return $array["similar"] = $result;
+				$array["similar"] = $result;
+				
+				return $array;
 			}
 			
 			//Upload image => array postgres
@@ -329,6 +331,13 @@ class Api_Model extends ZP_Model {
 	public function getReportByStop($where) {
 		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  " . $where ." order by report_id desc";
 		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		foreach($data as $key=> $value) {
+			$data[$key]["title"] = utf8_decode($value["title"]);
+			$data[$key]["descr"] = utf8_decode($value["descr"]);
+		}
 		
 		return $data;
 	}
