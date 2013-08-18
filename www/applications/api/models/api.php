@@ -339,7 +339,6 @@ class Api_Model extends ZP_Model {
 	
 	public function getReportByStop($where) {
 		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  " . $where ." order by report_id desc";
-		die(var_dump($query));
 		$data  = $this->Db->query($query);
 		
 		if(!$data) return false;
