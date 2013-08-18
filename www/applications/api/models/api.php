@@ -274,9 +274,16 @@ class Api_Model extends ZP_Model {
 			}
 			
 			//data to insert
-			$data["stop_id"]         = $idStop;
-			$data["report_date"]     = "CAST('" . date("Y-m-d H:i:s", time()) . "' AS DATE)";
-			$data["report_time"]     = "CAST('" . date("H:i:s", time()) . "' AS TIME)";
+			$date = date("Y-m-d H:i:s", time());
+			$time = date("H:i:s", time());
+			
+			$data["stop_id"]            = $idStop;
+			$data["report_date"]        = "CAST('" . $date . "' AS DATE)";
+			$data["report_time"]        = "CAST('" . $time . "' AS TIME)";
+			$data["last_modified_date"] = "CAST('" . $date . "' AS DATE)";
+			$data["last_modified_time"] = "CAST('" . $time . "' AS TIME)";
+			
+			
 			$data["report_textdate"] = decode(now(2));
 			
 			$result = $this->Db->insert("reports", $data, "report_id");
