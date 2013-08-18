@@ -283,7 +283,7 @@ class Api_Model extends ZP_Model {
 			$data["last_modified_date"] = "CAST('" . $date . "' AS DATE)";
 			$data["last_modified_time"] = "CAST('" . $time . "' AS TIME)";
 			$data["report_textdate"]    = decode(now(2));
-			die(var_dump($data));
+			
 			$result = $this->Db->insert("reports", $data, "report_id");
 			
 			return $result;
