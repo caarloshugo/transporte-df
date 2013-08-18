@@ -258,7 +258,7 @@ class Api_Model extends ZP_Model {
 			$idStop = $idStop . "}";
 			
 			$where  = rtrim($where, 'or');
-			$where .= " last_modified_date=CAST('" . $date . "' AS DATE) and";
+			$where .= " and last_modified_date=CAST('" . $date . "' AS DATE) and";
 			$where .= " EXTRACT(HOURS FROM (CAST('" . $time . "' as time) - last_modified_time)) < 2";
 			
 			//Search similar reports in stops
@@ -338,8 +338,7 @@ class Api_Model extends ZP_Model {
 	}
 	
 	public function getReportByStop($where) {
-		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  " . $where ." order by report_id desc";		
-		die(var_dump($query));
+		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  " . $where ." order by report_id desc";
 		$data  = $this->Db->query($query);
 		
 		if(!$data) return false;
