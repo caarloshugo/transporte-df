@@ -235,6 +235,10 @@ class Api_Model extends ZP_Model {
 	/*Reports*/
 	public function addReport($data = false) {
 		if($data and is_array($data)) {
+			//set date & time
+			$date = date("Y-m-d H:i:s", time());
+			$time = date("H:i:s", time());
+			
 			//array stops to postgres and query to search similar reports
 			$idStop = "{";
 			$where  = "where";
@@ -251,8 +255,11 @@ class Api_Model extends ZP_Model {
 			
 			unset($data["stop_id"]);
 			$idStop = rtrim($idStop, ',');
-			$where  = rtrim($where, 'or');
 			$idStop = $idStop . "}";
+			
+			$where  = rtrim($where, 'or');
+			$where .= " last_modified_date=CAST('" . $date . "' AS DATE) and";
+			$where .= " EXTRACT(HOURS FROM (CAST('" . $time . "' as time) - last_modified_time)) < 2";
 			
 			//Search similar reports in stops
 			$result = $this->getReportByStop($where);
@@ -274,9 +281,6 @@ class Api_Model extends ZP_Model {
 			}
 			
 			//data to insert
-			$date = date("Y-m-d H:i:s", time());
-			$time = date("H:i:s", time());
-			
 			$data["stop_id"]            = $idStop;
 			$data["report_date"]        = "CAST('" . $date . "' AS DATE)";
 			$data["report_time"]        = "CAST('" . $time . "' AS TIME)";
