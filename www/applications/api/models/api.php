@@ -304,9 +304,7 @@ class Api_Model extends ZP_Model {
 		if($data and is_array($data) and isset($data["image_url"])) {
 			$date  = "CAST('" . date("Y-m-d H:i:s", time()) . "' AS DATE)";
 			$time  = "CAST('" . date("H:i:s", time()) . "' AS TIME)";
-			$query = "update reports set last_modified_date=" . $date . ", last_modified_time=" .$time ."image_url=array_append(image_url,'" . $data["image_url"] . "') where report_id=" . $idReport;
-			
-			die(var_dump($query));
+			$query = "update reports set last_modified_date=" . $date . ", last_modified_time=" .$time .", image_url=array_append(image_url,'" . $data["image_url"] . "') where report_id=" . $idReport;
 			$data  = $this->Db->query($query);
 			
 			return $idReport;
