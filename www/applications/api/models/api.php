@@ -235,6 +235,16 @@ class Api_Model extends ZP_Model {
 	/*Reports*/
 	public function addReport($data = false) {
 		if($data and is_array($data)) {
+			//Upload image => array postgres
+			$this->Files = $this->core("Files");
+			$upload = $this->Files->uploadImage("www/lib/uploads/images/", "file", "normal");
+			
+			if($upload) {
+				$data["image_url"] = "{" . $upload . "}";
+			} else {
+				$data["image_url"] = "{www/lib/uploads/images/default.png}";
+			}
+			
 			//set date & time
 			$date = date("Y-m-d H:i:s", time());
 			$time = date("H:i:s", time());
@@ -267,17 +277,11 @@ class Api_Model extends ZP_Model {
 			if($result) {
 				$array["similar"] = $result;
 				
+				if($upload) {
+					$array["image_url"] = $upload;
+				}
+				
 				return $array;
-			}
-			
-			//Upload image => array postgres
-			$this->Files = $this->core("Files");
-			$upload = $this->Files->uploadImage("www/lib/uploads/images/", "file", "normal");
-			
-			if($upload) {
-				$data["image_url"] = "{" . $upload . "}";
-			} else {
-				$data["image_url"] = "{www/lib/uploads/images/default.png}";
 			}
 			
 			//data to insert
