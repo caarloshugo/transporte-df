@@ -302,8 +302,7 @@ class Api_Model extends ZP_Model {
 	
 	public function editReport($idReport, $data = false) {
 		if($data and is_array($data) and isset($data["image_url"])) {
-			$query = "update reports set image_url = array_append(image_url,'" . $data["image_url"] . "' where report_id=" . $idReport;
-			die(var_dump($query));
+			$query = "update reports set image_url = array_append(image_url,'" . $data["image_url"] . "') where report_id=" . $idReport;
 			$data  = $this->Db->query($query);
 			
 			return $idReport;
