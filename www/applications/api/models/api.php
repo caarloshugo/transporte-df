@@ -301,8 +301,8 @@ class Api_Model extends ZP_Model {
 	}
 	
 	public function editReport($idReport, $data = false) {
-		if($data and is_array($data)) {
-			
+		if($data and is_array($data) and isset($data["image_url"])) {
+			die(var_dump($data));
 		} else {
 			return false;
 		}
