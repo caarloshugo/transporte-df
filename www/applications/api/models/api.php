@@ -368,7 +368,7 @@ class Api_Model extends ZP_Model {
 	}
 	
 	public function getCategories() {
-		$query = "select * from  categories where type='report';
+		$query = "select * from  categories where type='report'";
 		$data  = $this->Db->query($query);
 		
 		foreach($data as $key=> $value) {
