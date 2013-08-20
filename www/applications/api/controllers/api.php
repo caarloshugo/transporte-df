@@ -88,7 +88,7 @@ class Api_Controller extends ZP_Controller {
 		echo json_encode($vars);
 	}
 	
-	public function categorires() {
+	public function categories() {
 		$vars["categories"] = $this->Api_Model->getCategories();
 		
 		echo json_encode($vars);
