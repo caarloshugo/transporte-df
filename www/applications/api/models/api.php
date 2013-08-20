@@ -359,4 +359,18 @@ class Api_Model extends ZP_Model {
 		
 		return $data;
 	}
+	
+	public function likeReport($idReport) {
+		$query = "update reports set counter=(counter+1) where report_id=" . $idReport . " and status=true";
+		$data  = $this->Db->query($query);
+		
+		return $idReport;
+	}
+	
+	public function getCategories() {
+		$query = "select * from  categories";
+		$data  = $this->Db->query($query);
+		
+		return $data;
+	}
 }

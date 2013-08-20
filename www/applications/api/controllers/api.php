@@ -78,8 +78,20 @@ class Api_Controller extends ZP_Controller {
 		echo json_encode($vars);
 	}
 	
-	public function likeReport($idReport) {
+	public function likeReport($idReport = false) {
+		if($idReport) {
+			$vars["report"] = $this->Api_Model->likeReport($idReport);
+		} else {
+			$vars["report"] = false;
+		}
 		
+		echo json_encode($vars);
+	}
+	
+	public function categorires() {
+		$vars["categories"] = $this->Api_Model->getCategories();
+		
+		echo json_encode($vars);
 	}
 	
 	/*Search near stop lon,lat*/	

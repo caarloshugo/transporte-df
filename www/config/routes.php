@@ -97,5 +97,19 @@ $routes = array(
 		"controller"  => "api",
 		"method"	  => "report",
 		"params"	  => array(segment(1))
+	),
+	13 => array(
+		"pattern"	  => "/^likereport/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "likeReport",
+		"params"	  => array(segment(1))
+	),
+	14 => array(
+		"pattern"	  => "/^categories/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "categories",
+		"params"	  => array()
 	)
 );
