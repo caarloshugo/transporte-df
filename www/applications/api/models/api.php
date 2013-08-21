@@ -356,6 +356,12 @@ class Api_Model extends ZP_Model {
 			$data[$key]["descr"]     = utf8_decode($value["descr"]);
 			$data[$key]["image_url"] = $this->getArray($value["image_url"]);
 			
+			if($value["counter"] == 0) {
+				$data[$key]["counter"] = "0";
+			} elseif($value["counter"] == 1) {
+				$data[$key]["counter"] = "1";
+			}
+			
 			unset($data[$key]["stop_id"]);
 		}
 		
@@ -373,23 +379,20 @@ class Api_Model extends ZP_Model {
 		
 		if(!$data) return false;
 		
-		foreach($data as $key=> $value) {
-			$stops = $this->getArray($value["stop_id"]);
-			
-			foreach($stops as $stopValue) {
-				$stop 				   = $this->getStopsReport($stopValue);
-				$data[$key]["stops"][] = $stop;	
-			}
-			
+		foreach($data as $key=> $value) {			
 			$data[$key]["title"] 	 = utf8_decode($value["title"]);
 			$data[$key]["descr"]	 = utf8_decode($value["descr"]);
 			$data[$key]["image_url"] = $this->getArray($value["image_url"]);
 			
+			if($value["counter"] == 0) {
+				$data[$key]["counter"] = "0";
+			} elseif($value["counter"] == 1) {
+				$data[$key]["counter"] = "1";
+			}
+			
 			unset($data[$key]["stop_id"]);
 		}
 		
-		
-		die(var_dump($data));
 		return $data;
 	}
 	
@@ -410,6 +413,12 @@ class Api_Model extends ZP_Model {
 			$data[$key]["title"] 	 = utf8_decode($value["title"]);
 			$data[$key]["descr"] 	 = utf8_decode($value["descr"]);
 			$data[$key]["image_url"] = $this->getArray($value["image_url"]);
+			
+			if($value["counter"] == 0) {
+				$data[$key]["counter"] = "0";
+			} elseif($value["counter"] == 1) {
+				$data[$key]["counter"] = "1";
+			}
 			
 			unset($data[$key]["stop_id"]);
 		}
