@@ -346,7 +346,7 @@ class Api_Model extends ZP_Model {
 			foreach($stops as $value) {
 				$stop = $this->getStop($value);
 				
-				$data[$key]["stops"][] = $stop[0];	
+				$data[$key]["stops"][] = $stop;	
 			}
 			
 			$data[$key]["title"] = utf8_decode($value["title"]);
