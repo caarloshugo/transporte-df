@@ -49,8 +49,8 @@ class Api_Controller extends ZP_Controller {
 			unset($data["new"]);
 			
 			$vars["report"] = $this->Api_Model->addReport($data);
-		} elseif(isset($data["idReport"]) and is_numeric($data["idReport"])) {
-			$vars["report"] = $this->Api_Model->editReport($data["idReport"], $data);
+		} elseif(isset($data["image_url"]) and isset($data["report_id"]) and is_numeric($data["report_id"])) {
+			$vars["report"] = $this->Api_Model->editReport($data["report_id"], $data);
 		} else {
 			$vars["error"] = "Error en el request";
 		}
@@ -78,8 +78,20 @@ class Api_Controller extends ZP_Controller {
 		echo json_encode($vars);
 	}
 	
-	public function likeReport($idReport) {
+	public function likeReport($idReport = false) {
+		if($idReport) {
+			$vars["report"] = $this->Api_Model->likeReport($idReport);
+		} else {
+			$vars["report"] = false;
+		}
 		
+		echo json_encode($vars);
+	}
+	
+	public function categories() {
+		$vars["categories"] = $this->Api_Model->getCategories();
+		
+		echo json_encode($vars);
 	}
 	
 	/*Search near stop lon,lat*/	

@@ -235,6 +235,16 @@ class Api_Model extends ZP_Model {
 	/*Reports*/
 	public function addReport($data = false) {
 		if($data and is_array($data)) {
+			//Upload image => array postgres
+			$this->Files = $this->core("Files");
+			$upload = $this->Files->uploadImage("www/lib/uploads/images/", "file", "normal");
+			
+			if($upload) {
+				$data["image_url"] = "{" . $upload . "}";
+			} else {
+				$data["image_url"] = "{www/lib/uploads/images/default.png}";
+			}
+			
 			//set date & time
 			$date = date("Y-m-d H:i:s", time());
 			$time = date("H:i:s", time());
@@ -267,17 +277,11 @@ class Api_Model extends ZP_Model {
 			if($result) {
 				$array["similar"] = $result;
 				
+				if($upload) {
+					$array["image_url"] = $upload;
+				}
+				
 				return $array;
-			}
-			
-			//Upload image => array postgres
-			$this->Files = $this->core("Files");
-			$upload = $this->Files->uploadImage("www/lib/uploads/images/", "file", "normal");
-			
-			if($upload) {
-				$data["image_url"] = "{" . $upload . "}";
-			} else {
-				$data["image_url"] = "{www/lib/uploads/images/default.png}";
 			}
 			
 			//data to insert
@@ -297,8 +301,13 @@ class Api_Model extends ZP_Model {
 	}
 	
 	public function editReport($idReport, $data = false) {
-		if($data and is_array($data)) {
+		if($data and is_array($data) and isset($data["image_url"])) {
+			$date  = "CAST('" . date("Y-m-d H:i:s", time()) . "' AS DATE)";
+			$time  = "CAST('" . date("H:i:s", time()) . "' AS TIME)";
+			$query = "update reports set last_modified_date=" . $date . ", last_modified_time=" .$time .", image_url=array_append(image_url,'" . $data["image_url"] . "') where report_id=" . $idReport;
+			$data  = $this->Db->query($query);
 			
+			return $idReport;
 		} else {
 			return false;
 		}
@@ -346,6 +355,24 @@ class Api_Model extends ZP_Model {
 		foreach($data as $key=> $value) {
 			$data[$key]["title"] = utf8_decode($value["title"]);
 			$data[$key]["descr"] = utf8_decode($value["descr"]);
+		}
+		
+		return $data;
+	}
+	
+	public function likeReport($idReport) {
+		$query = "update reports set counter=(counter+1) where report_id=" . $idReport . " and status=true";
+		$data  = $this->Db->query($query);
+		
+		return $idReport;
+	}
+	
+	public function getCategories() {
+		$query = "select * from  categories where type='report'";
+		$data  = $this->Db->query($query);
+		
+		foreach($data as $key=> $value) {
+			$data[$key]["name"] = utf8_decode($value["name"]);
 		}
 		
 		return $data;
