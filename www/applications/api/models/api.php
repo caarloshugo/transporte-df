@@ -469,6 +469,14 @@ class Api_Model extends ZP_Model {
 			$query = "update reports set counter=(counter-1) where report_id=" . $idReport . " and status=true";
 			$data  = $this->Db->query($query);
 			
+			$query = "select counter from reports where report_id=" . $idReport;
+			$data  = $this->Db->query($query);
+			
+			if($data[0]["counter"] < -5) {
+				$query = "update reports set status=false where report_id=" . $idReport;
+				$data  = $this->Db->query($query);
+			}
+			
 			return $result;
 		} else {
 			return false;
