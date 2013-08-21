@@ -340,11 +340,11 @@ class Api_Model extends ZP_Model {
 		
 		foreach($data as $key=> $value) {
 			$stops = str_replace("{", "", $value["stop_id"]);
-			$stops = str_replace("}", "", $value["stop_id"]);
+			$stops = str_replace("}", "", $stops);
 			$stops = explode(",", $stops);
 			
-			foreach($stops as $value) {
-				$stop = $this->getStop($value);
+			foreach($stops as $stopValue) {
+				$stop = $this->getStop($stopValue);
 				
 				$data[$key]["stops"][] = $stop;	
 			}
