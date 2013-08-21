@@ -78,6 +78,16 @@ class Api_Controller extends ZP_Controller {
 		echo json_encode($vars);
 	}
 	
+	public function gallery($offset = 0) {
+		if(!is_numeric($offset)) {
+			$offset = 0;
+		}
+		
+		$vars["reports"] = $this->Api_Model->getReportsGallery($offset);
+		
+		echo json_encode($vars);
+	}
+	
 	public function likeReport($idReport = false) {
 		if(is_numeric($idReport)) {
 			if($idReport) {
@@ -95,12 +105,12 @@ class Api_Controller extends ZP_Controller {
 	public function abuseReport($idReport = false) {
 		if(is_numeric($idReport)) {
 			if($idReport) {
-				$vars["report"] = $this->Api_Model->abuseReport($idReport);
+				$vars["abuse"] = $this->Api_Model->abuseReport($idReport);
 			} else {
-				$vars["report"] = false;
+				$vars["abuse"] = false;
 			}
 		} else {
-			$vars["report"] = false;
+			$vars["abuse"] = false;
 		}
 		
 		echo json_encode($vars);
