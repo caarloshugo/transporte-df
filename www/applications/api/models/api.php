@@ -355,6 +355,7 @@ class Api_Model extends ZP_Model {
 			$data[$key]["title"]     = utf8_decode($value["title"]);
 			$data[$key]["descr"]     = utf8_decode($value["descr"]);
 			$data[$key]["image_url"] = $this->getArray($value["image_url"]);
+			$data[$key]["category"]  = utf8_decode($value["category"]);
 			
 			if($value["counter"] == 0) {
 				$data[$key]["counter"] = "0";
@@ -383,6 +384,7 @@ class Api_Model extends ZP_Model {
 			$data[$key]["title"] 	 = utf8_decode($value["title"]);
 			$data[$key]["descr"]	 = utf8_decode($value["descr"]);
 			$data[$key]["image_url"] = $this->getArray($value["image_url"]);
+			$data[$key]["category"]  = utf8_decode($value["category"]);
 			
 			if($value["counter"] == 0) {
 				$data[$key]["counter"] = "0";
@@ -412,6 +414,7 @@ class Api_Model extends ZP_Model {
 			
 			$data[$key]["title"] 	 = utf8_decode($value["title"]);
 			$data[$key]["descr"] 	 = utf8_decode($value["descr"]);
+			$data[$key]["category"]  = utf8_decode($value["category"]);
 			$data[$key]["image_url"] = $this->getArray($value["image_url"]);
 			
 			if($value["counter"] == 0) {
