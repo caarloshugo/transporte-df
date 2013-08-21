@@ -106,6 +106,13 @@ $routes = array(
 		"params"	  => array(segment(1))
 	),
 	14 => array(
+		"pattern"	  => "/^abusereport/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "abuseReport",
+		"params"	  => array(segment(1))
+	),
+	15 => array(
 		"pattern"	  => "/^categories/",
 		"application" => "api",
 		"controller"  => "api",

@@ -79,8 +79,26 @@ class Api_Controller extends ZP_Controller {
 	}
 	
 	public function likeReport($idReport = false) {
-		if($idReport) {
-			$vars["report"] = $this->Api_Model->likeReport($idReport);
+		if(is_numeric($idReport)) {
+			if($idReport) {
+				$vars["report"] = $this->Api_Model->likeReport($idReport);
+			} else {
+				$vars["report"] = false;
+			}
+		} else {
+			$vars["report"] = false;
+		}
+		
+		echo json_encode($vars);
+	}
+	
+	public function abuseReport($idReport = false) {
+		if(is_numeric($idReport)) {
+			if($idReport) {
+				$vars["report"] = $this->Api_Model->likeReport($idReport);
+			} else {
+				$vars["report"] = false;
+			}
 		} else {
 			$vars["report"] = false;
 		}
