@@ -353,7 +353,6 @@ class Api_Model extends ZP_Model {
 			$data[$key]["descr"] = utf8_decode($value["descr"]);
 		}
 		
-		die(var_dump($data));
 		return $data;
 	}
 	
