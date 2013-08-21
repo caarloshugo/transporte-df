@@ -95,7 +95,7 @@ class Api_Controller extends ZP_Controller {
 	public function abuseReport($idReport = false) {
 		if(is_numeric($idReport)) {
 			if($idReport) {
-				$vars["report"] = $this->Api_Model->likeReport($idReport);
+				$vars["report"] = $this->Api_Model->abuseReport($idReport);
 			} else {
 				$vars["report"] = false;
 			}
