@@ -388,6 +388,8 @@ class Api_Model extends ZP_Model {
 			unset($data[$key]["stop_id"]);
 		}
 		
+		
+		die(var_dump($data));
 		return $data;
 	}
 	
