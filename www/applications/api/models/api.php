@@ -437,10 +437,25 @@ class Api_Model extends ZP_Model {
 	}
 	
 	public function abuseReport($idReport) {
-		$query = "update reports set counter=(counter-1) where report_id=" . $idReport . " and status=true";
-		$data  = $this->Db->query($query);
+		//set date & time
+		$date = date("Y-m-d H:i:s", time());
+		$time = date("H:i:s", time());
+			
+		$data["report_id"]   = $idReport;	
+		$data["report_date"] = "CAST('" . $date . "' AS DATE)";
+		$data["report_time"] = "CAST('" . $time . "' AS TIME)";
 		
-		return $idReport;
+		$result = $this->Db->insert("abuse", $data, "abuse_id");
+		
+		if($result) {
+			$query = "update reports set counter=(counter-1) where report_id=" . $idReport . " and status=true";
+			$data  = $this->Db->query($query);
+			
+			return $result;
+		} else {
+			return false;
+		}
+		
 	}
 	
 	public function getCategories() {
