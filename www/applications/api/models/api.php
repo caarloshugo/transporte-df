@@ -345,13 +345,7 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key=> $value) {
-			$image_url = str_replace("{", "", $value["image_url"]);
-			$image_url = str_replace("}", "", $image_url);
-			$image_url = explode(",", $image_url);
-			
-			$stops = str_replace("{", "", $value["stop_id"]);
-			$stops = str_replace("}", "", $stops);
-			$stops = explode(",", $stops);
+			$stops = $this->getArray($value["stop_id"]);
 			
 			foreach($stops as $stopValue) {
 				$stop 				   = $this->getStopsReport($stopValue);
@@ -360,7 +354,7 @@ class Api_Model extends ZP_Model {
 			
 			$data[$key]["title"]     = utf8_decode($value["title"]);
 			$data[$key]["descr"]     = utf8_decode($value["descr"]);
-			$data[$key]["image_url"] = $image_url;
+			$data[$key]["image_url"] = $this->getArray($value["image_url"]);
 			
 			unset($data[$key]["stop_id"]);
 		}
@@ -380,13 +374,7 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key=> $value) {
-			$image_url = str_replace("{", "", $value["image_url"]);
-			$image_url = str_replace("}", "", $image_url);
-			$image_url = explode(",", $image_url);
-			
-			$stops = str_replace("{", "", $value["stop_id"]);
-			$stops = str_replace("}", "", $stops);
-			$stops = explode(",", $stops);
+			$stops = $this->getArray($value["stop_id"]);
 			
 			foreach($stops as $stopValue) {
 				$stop 				   = $this->getStopsReport($stopValue);
@@ -395,7 +383,7 @@ class Api_Model extends ZP_Model {
 			
 			$data[$key]["title"] 	 = utf8_decode($value["title"]);
 			$data[$key]["descr"]	 = utf8_decode($value["descr"]);
-			$data[$key]["image_url"] = $image_url;
+			$data[$key]["image_url"] = $this->getArray($value["image_url"]);
 			
 			unset($data[$key]["stop_id"]);
 		}
@@ -410,13 +398,7 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key=> $value) {
-			$image_url = str_replace("{", "", $value["image_url"]);
-			$image_url = str_replace("}", "", $image_url);
-			$image_url = explode(",", $image_url);
-			
-			$stops = str_replace("{", "", $value["stop_id"]);
-			$stops = str_replace("}", "", $stops);
-			$stops = explode(",", $stops);
+			$stops = $this->getArray($value["stop_id"]);
 			
 			foreach($stops as $stopValue) {
 				$stop 				   = $this->getStopsReport($stopValue);
@@ -425,7 +407,7 @@ class Api_Model extends ZP_Model {
 			
 			$data[$key]["title"] 	 = utf8_decode($value["title"]);
 			$data[$key]["descr"] 	 = utf8_decode($value["descr"]);
-			$data[$key]["image_url"] = $image_url;
+			$data[$key]["image_url"] = $this->getArray($value["image_url"]);
 			
 			unset($data[$key]["stop_id"]);
 		}
@@ -449,5 +431,14 @@ class Api_Model extends ZP_Model {
 		}
 		
 		return $data;
+	}
+	
+	/*String methods*/
+	public function getArray($string = "") {
+		$string = str_replace("{", "", $string);
+		$string = str_replace("}", "", $string);
+		$string = explode(",", $string);
+		
+		return $string;
 	}
 }
