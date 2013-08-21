@@ -339,7 +339,7 @@ class Api_Model extends ZP_Model {
 	}
 	
 	public function getReport($idReport) {
-		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  where report_id=" . $idReport . " order by report_id desc";
+		$query = "select reports.*, categories.name as category from reports left join categories on categories.category_id=reports.category_id  where report_id=" . $idReport . " order by report_id desc";
 		$data  = $this->Db->query($query);
 		
 		if(!$data) return false;
@@ -364,9 +364,9 @@ class Api_Model extends ZP_Model {
 	
 	public function getReports($offset = 0, $limit = 20) {
 		if($offset==0) {
-			$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id order by report_id desc limit " . $limit;
+			$query = "select reports.*, categories.name as category from reports left join categories on categories.category_id=reports.category_id order by report_id desc limit " . $limit;
 		} else {
-			$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id order by report_id desc limit " . $limit . " offset " . $offset;
+			$query = "select reports.*, categories.name as category from reports left join categories on categories.category_id=reports.category_id order by report_id desc limit " . $limit . " offset " . $offset;
 		} 
 		
 		$data = $this->Db->query($query);
@@ -392,7 +392,7 @@ class Api_Model extends ZP_Model {
 	}
 	
 	public function getReportByStop($where) {
-		$query = "select reports.*, categories.name from reports left join categories on categories.category_id=reports.category_id  " . $where ." order by report_id desc";
+		$query = "select reports.*, categories.name as category from reports left join categories on categories.category_id=reports.category_id  " . $where ." order by report_id desc";
 		$data  = $this->Db->query($query);
 		
 		if(!$data) return false;
