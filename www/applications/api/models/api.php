@@ -339,10 +339,21 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key=> $value) {
+			$stops = str_replace("{", "", $value["stop_id"]);
+			$stops = str_replace("}", "", $value["stop_id"]);
+			$stops = explode(",", $stops);
+			
+			foreach($stops as $value) {
+				$stop = $this->getStop($value);
+				
+				$data[$key]["stops"][] = $stop[0];	
+			}
+			
 			$data[$key]["title"] = utf8_decode($value["title"]);
 			$data[$key]["descr"] = utf8_decode($value["descr"]);
 		}
 		
+		die(var_dump($data));
 		return $data;
 	}
 	
