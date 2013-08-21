@@ -232,6 +232,31 @@ class Api_Model extends ZP_Model {
 		return $data;
 	}
 	
+	public function getStopsReport($idStop) {
+		$query = "select * from stops where stop_id='" . $idStop . "'";
+		$stops = $this->Db->query($query);
+		
+		if(!$stops) return false;
+		
+		foreach($stops as $key=> $value) {
+			unset($stops[$key]["textsearch"]);
+			unset($stops[$key]["the_geom"]);
+			$stops[$key]["stop_name"] = utf8_decode($value["stop_name"]);
+			$stops[$key]["stop_desc"] = utf8_decode($value["stop_desc"]);
+		}
+		
+		foreach($stops as $key => $stop) {
+			$route  = $this->getRoute($stop["route_id"]);
+			$agency = $this->getAgency($route[0]["agency_id"]);
+			
+			$data["stops"][$key]["route"]  = $route[0];
+			$data["stops"][$key]["agency"] = $agency[0];
+			$data["stops"][$key]["stop"]   = $stop;
+		}
+		
+		return $data;
+	}
+	
 	/*Reports*/
 	public function addReport($data = false) {
 		if($data and is_array($data)) {
@@ -344,8 +369,7 @@ class Api_Model extends ZP_Model {
 			$stops = explode(",", $stops);
 			
 			foreach($stops as $stopValue) {
-				$stop = $this->getStop($stopValue);
-				
+				$stop 				   = $this->getStopsReport($stopValue);
 				$data[$key]["stops"][] = $stop;	
 			}
 			
