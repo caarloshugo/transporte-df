@@ -441,12 +441,16 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key=> $value) {
+			/*
 			$stops = $this->getArray($value["stop_id"]);
 			
 			foreach($stops as $stopValue) {
 				$stop 				   = $this->getStopsReport($stopValue);
 				$data[$key]["stops"][] = $stop;	
 			}
+			*/
+			
+			unset($data[$key]["stop_id"]);
 			
 			$data[$key]["category"] = utf8_decode($value["category"]);
 		}
