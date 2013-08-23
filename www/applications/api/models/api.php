@@ -431,9 +431,9 @@ class Api_Model extends ZP_Model {
 	
 	public function getReportsGallery($offset = 0, $limit = 20) {
 		if($offset==0) {
-			$query = "select report_id, image_url[array_length(image_url, 1)], categories.name as category from reports left join categories on categories.category_id=reports.category_id where reports.status=true order by report_id desc limit " . $limit;
+			$query = "select report_id, stop_id, image_url[array_length(image_url, 1)], categories.name as category from reports left join categories on categories.category_id=reports.category_id where reports.status=true order by report_id desc limit " . $limit;
 		} else {
-			$query = "select report_id, image_url[array_length(image_url, 1)], categories.name as category from reports left join categories on categories.category_id=reports.category_id where reports.status=true order by report_id desc limit " . $limit . " offset " . $offset;
+			$query = "select report_id, stop_id, image_url[array_length(image_url, 1)], categories.name as category from reports left join categories on categories.category_id=reports.category_id where reports.status=true order by report_id desc limit " . $limit . " offset " . $offset;
 		} 
 		
 		$data = $this->Db->query($query);
@@ -441,6 +441,13 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key=> $value) {
+			$stops = $this->getArray($value["stop_id"]);
+			
+			foreach($stops as $stopValue) {
+				$stop 				   = $this->getStopsReport($stopValue);
+				$data[$key]["stops"][] = $stop;	
+			}
+			
 			$data[$key]["category"] = utf8_decode($value["category"]);
 		}
 		
