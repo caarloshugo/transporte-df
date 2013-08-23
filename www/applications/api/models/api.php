@@ -429,6 +429,40 @@ class Api_Model extends ZP_Model {
 		return $data;
 	}
 	
+	public function getStopsGeometry($idStop) {
+		$query = "select stop_lat, stop_lon from stops where stop_id='" . $idStop . "'";
+		$stop  = $this->Db->query($query);
+		
+		if(!$stop) {
+			return false;
+		} else {
+			return $stop[0];
+		}
+	}
+	
+	public function getMapReport($limit = 100) {
+		$query = "select report_id, reports.category_id, stop_id, categories.name as category from reports left join categories on categories.category_id=reports.category_id where reports.status=true order by report_id desc limit " . $limit;
+		
+		$data = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		foreach($data as $key=> $value) {
+			$stops = $this->getArray($value["stop_id"]);
+			
+			foreach($stops as $stopValue) {
+				$stop 				   = $this->getStopsGeometry($stopValue);
+				$data[$key]["stops"][] = $stop;	
+			}
+			
+			unset($data[$key]["stop_id"]);
+			
+			$data[$key]["category"] = utf8_decode($value["category"]);
+		}
+		
+		return $data;
+	}
+	
 	public function getReportsGallery($offset = 0, $limit = 20) {
 		if($offset==0) {
 			$query = "select report_id, stop_id, image_url[array_length(image_url, 1)], categories.name as category from reports left join categories on categories.category_id=reports.category_id where reports.status=true order by report_id desc limit " . $limit;
@@ -440,18 +474,7 @@ class Api_Model extends ZP_Model {
 		
 		if(!$data) return false;
 		
-		foreach($data as $key=> $value) {
-			/*
-			$stops = $this->getArray($value["stop_id"]);
-			
-			foreach($stops as $stopValue) {
-				$stop 				   = $this->getStopsReport($stopValue);
-				$data[$key]["stops"][] = $stop;	
-			}
-			*/
-			
-			unset($data[$key]["stop_id"]);
-			
+		foreach($data as $key=> $value) {			
 			$data[$key]["category"] = utf8_decode($value["category"]);
 		}
 		

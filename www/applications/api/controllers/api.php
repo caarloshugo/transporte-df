@@ -88,6 +88,12 @@ class Api_Controller extends ZP_Controller {
 		echo json_encode($vars);
 	}
 	
+	public function map() {
+		$vars["reports"] = $this->Api_Model->getMapReport();
+		
+		echo json_encode($vars);
+	}
+	
 	public function likeReport($idReport = false) {
 		if(is_numeric($idReport)) {
 			if($idReport) {

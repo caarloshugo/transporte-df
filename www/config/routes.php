@@ -125,5 +125,12 @@ $routes = array(
 		"controller"  => "api",
 		"method"	  => "gallery",
 		"params"	  => array(segment(1))
+	),
+	16 => array(
+		"pattern"	  => "/^map/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "map",
+		"params"	  => array()
 	)
 );
