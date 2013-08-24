@@ -455,6 +455,12 @@ class Api_Model extends ZP_Model {
 				$data[$key]["stops"][] = $stop;	
 			}
 			
+			if($value["category_id"] == 0) {
+				$data[$key]["category_id"] = "0";
+			} elseif($value["category_id"] == 1) {
+				$data[$key]["category_id"] = "1";
+			}
+			
 			unset($data[$key]["stop_id"]);
 			
 			$data[$key]["category"] = utf8_decode($value["category"]);
